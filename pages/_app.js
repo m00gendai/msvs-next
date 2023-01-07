@@ -1,10 +1,10 @@
 import '../styles/globals.css'
-import Nav from "../components/MainNavMenu"
+import Navbar from "../components/MainNavMenu"
 
 export default function App({ Component, pageProps }) {
   return(
     <>
-    <Nav />
+    <Navbar />
       
         
     <Component {...pageProps} />
