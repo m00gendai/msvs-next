@@ -68,4 +68,10 @@ align-self: stretch;
   display: flex;
   justify-content: center;
   align-content: center;
+  font-weight: 700;
+}
+
+.button:hover,
+.buttonLong:hover{
+  cursor: pointer;
 }
