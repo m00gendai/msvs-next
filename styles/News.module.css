@@ -1,0 +1,13 @@
+.container{
+    position: relative;
+    background: red;
+    height: 100%;
+}
+
+.inner{
+    flex-grow: 1;
+}
+
+.h2{
+    margin: 0;
+}
