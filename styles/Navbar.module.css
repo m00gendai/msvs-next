@@ -1,72 +1,83 @@
-.navbar{
-    position: fixed;
+.nav {
+    position: sticky;
     top: 0;
-    right: 0;
-    left: 0;
     width: 100%;
-    height: 3rem;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.9);
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
-    margin: 0;
-    padding: 0;
-    z-index: 200;
+    z-index: 100;
+    height: 10vh;
 }
 
-.navbarList{
+.linkContainer {
     position: relative;
-    width: 75%;
+    width: 90%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    flex-wrap: nowrap;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    padding: 0 0 0 1rem;
 }
 
-.navbarItem{
+.surLinkContainer {
     position: relative;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20%;
-    margin: 0;
-    padding: 0;
 }
 
-.navbarItem::before{
+.surLinkContainer:hover {
+    cursor: pointer;
+}
+
+.subLinkContainer {
     position: absolute;
-    content: "";
-    width: 100%;
-    height: 50%;
-    border-left: 0.5px solid white;
-    border-right: 0.5px solid white;
-}
-
-.navbarItem:nth-child(1)::before{
-    border-left: none;
-}
-
-.navbarItem:last-child::before{
-    border-right: none;
-}
-
-.navbarItemLink{
-    position: relative;
-    width: 100%;
-    height: 100%;
+    top: 10vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    transition: 0.5s;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background: rgba(0,0,0,0.9);
+    padding: 0 0.5rem 0 0.5rem;
 }
 
-.navbarItemLink:hover{
-    background: rgba(0,0,0,0.2);
+.link {
+    color: white;
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 1rem;
+    text-decoration: none;
+}
+
+.link:hover{
+    color: yellow;
+}
+
+.homeLink {
+    margin: 1rem 0 1rem 0;
+    background-image: url("/logo.gif");
+    background-size: contain;
+    height: 80%;
+    aspect-ratio: 1/1;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.sublink {
+    color: white;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 0.25rem;
+    border-bottom: 1px solid yellow;
+    padding: 0.25rem;
+    text-decoration: none;
+}
+
+.sublink:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    color: yellow;
 }
