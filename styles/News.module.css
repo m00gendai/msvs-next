@@ -1,18 +1,20 @@
 .container{
-    position: relative;
-    background: red;
+    position: absolute;
     width: 100%;
     display: flex;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
     flex-wrap: wrap;
 }
 
 .inner{
     position: relative;
     display: flex;
-    width: 100%;
-    background: green;
-    align-self: stretch;
+    width: 90%;
     flex-wrap: wrap;
+    overflow-y: scroll;
+    height: 100%;
 }
 
 .inner p{
