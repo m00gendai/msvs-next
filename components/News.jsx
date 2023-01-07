@@ -5,7 +5,10 @@ export default function News(){
         <div className={s.container}>
         <h2>News</h2>
         <div className={s.inner}>
-            Hey
+            <p>hey</p>
+            <p>listen</p>
+            <p>HEY</p>
+            <p>LISTEN</p>
         </div>
         </div>
     )
