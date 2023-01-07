@@ -1,0 +1,40 @@
+.footer{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(0,0,0,1);
+}
+
+.footer p{
+    position: relative;
+    padding: 0.5rem;
+    color: white;
+    text-align: center;
+}
+
+.linkContainer{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 0 1rem 0;
+}
+
+@media screen and (orientation: portrait){
+    .footer {
+        flex-wrap: wrap;
+    }
+    .footer p{
+        width: 100%
+    }
+    .linkContainer{
+        width: 100%;
+    }
+}
+
+.link{
+    color: white;
+    text-decoration: none;
+}
