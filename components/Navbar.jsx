@@ -29,8 +29,8 @@ export default function Navbar(){
         <nav className ={s.nav}>
             <div className={s.linkContainer}>
                 <Link className={s.homeLink} href="/"></Link>
-                <Link className={s.link} href="/anlaesse">Gewehr</Link>
-                <Link className={s.link} href="/resultate">Pistole</Link>
+                <Link className={s.link} href="/gewehr">Gewehr</Link>
+                <Link className={s.link} href="/pistole">Pistole</Link>
                 <Link className={s.link} href="/resultate">LG & Lupi</Link>
                 <Link className={s.link} href="/resultate">Kantonalcup</Link>
                 <div className={s.surLinkContainer} onMouseEnter={(e)=>handleSubMenuTrigger(e)} onMouseLeave={(e)=>handleSubMenuTrigger(e)}>
