@@ -5,7 +5,12 @@ import Gruppenfoto from "../public/Gruppenfoto.jpg"
 import Logo from "../public/logo.gif"
 import News from "../components/News"
 
-export default function Home() {
+export default function Home({   
+        sourceDirectoryList
+    }) {
+
+  const latestFiles = sourceDirectoryList.data
+
   return (
     <>
       <Head>
@@ -29,10 +34,30 @@ export default function Home() {
             </div>
         </section>
         <section className={s.news}>
-          <News />
+          <News items={latestFiles}/>
         </section>
         </main>
 
     </>
   )
+}
+
+export async function getStaticProps() {
+    // Gets all folders and files in the /Resultate directory recursively, sorted by last modified
+    const getSourceDirectoryList = await fetch(`https://api.infomaniak.com/2/drive/608492/files/search?directory_id=15646&depth=unlimited&order_by=added_at&order=desc&types[]=pdf&types[]=text&per_page=1000`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${process.env.KDRIVE}`,
+            "Content-Type" : "application/json"
+        },
+
+    })
+    const sourceDirectoryList = await getSourceDirectoryList.json()
+
+    return { 
+        props: {
+            sourceDirectoryList
+        } , 
+            revalidate: 2
+    }
 }
