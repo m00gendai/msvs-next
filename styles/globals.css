@@ -73,3 +73,27 @@ h4 {
   text-align: left;
   padding: 0 0 0 1rem;
 }
+
+.archiv{
+  position: relative;
+  width: 50%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffff00;
+  margin: 0 0 2rem 0;
+  text-decoration: none;
+  color: black;
+}
+
+.archiv:hover{
+  cursor: pointer;
+  background: gold;
+}
+
+.archiv > h3{
+  width: auto;
+  text-decoration: none;
+  padding: 0;
+}
