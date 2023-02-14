@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { useRouter } from 'next/router'
 import Header from "../components/header"
 import s from "../styles/Page.module.css"
@@ -37,7 +38,7 @@ export default function Gewehr(
         <main>
             <section className={s.section}>
                 <h2>Pistole</h2> 
-                <h3>Einladungen</h3>
+                <h3>{`Einladungen ${currentYear}`}</h3>
                 {
                     results.map(result =>{
                         if(result.type == "dir" && isNaN(parseInt(result.name)) && currentYearDirIds.includes(result.id) && result.name == "Einladungen"){ 
@@ -70,7 +71,7 @@ export default function Gewehr(
                         }
                     })
                 }
-                <h3>Resultate</h3>
+                <h3>{`Resultate ${currentYear}`}</h3>
                 {
                     results.map(result =>{
                         if(result.type == "dir" && isNaN(parseInt(result.name)) && currentYearDirIds.includes(result.id) && result.name != "Einladungen"){ 
@@ -119,6 +120,7 @@ export default function Gewehr(
                         }
                     })
                 }
+                <Link className="archiv" href={`https://kdrive.infomaniak.com/app/share/608492/7d5ad3ba-c137-4d02-b7ca-7bd9664817c7`} target={`_blank`} ><h3>Archiv</h3></Link>
             </section>
         </main>
         </>
