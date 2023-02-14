@@ -31,16 +31,16 @@ export default function Navbar(){
                 <Link className={s.homeLink} href="/"></Link>
                 <Link className={s.link} href="/gewehr">Gewehr</Link>
                 <Link className={s.link} href="/pistole">Pistole</Link>
-                <Link className={s.link} href="/resultate">LG & Lupi</Link>
-                <Link className={s.link} href="/resultate">Kantonalcup</Link>
+                <Link className={s.link} href="/lupi">Lupi</Link>
+                <Link className={s.link} href="/kantonalcup">Kantonalcup</Link>
                 <div className={s.surLinkContainer} onMouseEnter={(e)=>handleSubMenuTrigger(e)} onMouseLeave={(e)=>handleSubMenuTrigger(e)}>
                     <div className={s.link} >Die MSVS</div>
                     {visible?
                     <div className={s.subLinkContainer} >
-                        <Link className={s.sublink} href="/schiessen/schwabenkrieg-erinnerungsschiessen">Jubiläum</Link>
-                        <Link className={s.sublink} href="/schiessen/obligatorisches">Vorstand</Link>
-                        <Link className={s.sublink} href="/schiessen/feldschiessen">Bilder</Link>
-                        <Link className={s.sublink} href="/schiessen/hilfsmittel">Protokolle</Link>
+                        <Link className={s.sublink} href="/vorstand">Vorstand</Link>
+                        <Link className={s.sublink} href="/jubilaeum">Jubiläum</Link>
+                        <Link className={s.sublink} href="/bilder">Bilder</Link>
+                        <Link className={s.sublink} href="/protokolle">Protokolle</Link>
                     </div>
                     : null}
                 </div>
