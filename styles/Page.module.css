@@ -39,3 +39,8 @@
     background: yellow;
     padding: 0.5rem;
 }
+
+.item:hover{
+    cursor:pointer;
+    background:gold;
+}
