@@ -15,7 +15,7 @@ export default function Gewehr(
     const currentYear = 2022 // date.getFullYear()
 
     const router = useRouter()
-    const headUrl = `https://pistolenclub-hallau.ch${router.pathname}`
+    const headUrl = `https://msvs.ch${router.pathname}`
 
     const results = sourceDirectoryList.data.sort((a,b) =>{
         const x = a.added_at
