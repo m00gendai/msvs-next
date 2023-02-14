@@ -3,6 +3,7 @@ import Image from "next/image"
 import { useRouter } from 'next/router'
 import Header from "../components/header"
 import s from "../styles/Page.module.css"
+import getFile from "../functions/getFile"
 
 export default function Gewehr(
     {
