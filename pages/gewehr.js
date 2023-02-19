@@ -13,7 +13,7 @@ export default function Gewehr(
     ){
 
     const date = new Date()
-    const currentYear = 2022 // date.getFullYear()
+    const currentYear = date.getFullYear()
 
     const router = useRouter()
     const headUrl = `https://msvs.ch${router.pathname}`
