@@ -6,7 +6,7 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 
 export default function Vorstand(){
-  console.log(boardmembers)
+
     return(
         <>
       <Head>
@@ -25,7 +25,7 @@ export default function Vorstand(){
                 const street = physicalAddress[0]
                 const place = physicalAddress[1]
                 return(
-                  <div className={s.item}>
+                  <div className={s.item} key={`member_${member.what}`}>
                     <h3>{member.what}</h3>
                     <h4>{member.who}</h4>
                     <div className={s.doxx}>
