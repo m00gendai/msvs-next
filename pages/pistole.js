@@ -5,7 +5,7 @@ import Header from "../components/header"
 import s from "../styles/Page.module.css"
 import getFile from "../functions/getFile"
 
-export default function Gewehr(
+export default function Pistole(
     {
         sourceDirectoryList, 
         images
@@ -13,7 +13,7 @@ export default function Gewehr(
     ){
 
     const date = new Date()
-    const currentYear = 2022 // date.getFullYear()
+    const currentYear = date.getFullYear()
 
     const router = useRouter()
     const headUrl = `https://msvs.ch${router.pathname}`
