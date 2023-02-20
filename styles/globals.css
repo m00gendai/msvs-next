@@ -46,6 +46,7 @@ h1 {
   background: rgba(0, 0, 0, 1);
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
   font-weight: 100;
