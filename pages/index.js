@@ -19,7 +19,7 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 ><div className={s.logo}><Image src={Logo} fill /></div>Matchschützenvereinigung Schaffhausen</h1>
+      <h1 ><div className={s.logo}><Image src={Logo} fill /></div>Match<wbr/>schützen<wbr/>vereinigung Schaffhausen</h1>
         <main>
           
         <section className={s.section}>
