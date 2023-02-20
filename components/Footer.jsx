@@ -15,7 +15,7 @@ export default function Footer(){
                 ?
                 <>
                     <p>
-                        ©{currentYear.toString() == "2023" ? "2023" : `2023 - ${currentYear}`} Pistolenclub Hallau
+                        ©{currentYear.toString() == "2023" ? "2023" : `2023 - ${currentYear}`} Matchschützenvereinigung Schaffhausen
                     </p>
                     <div className={s.linkContainer}>
                         <Link className={s.link} href="/impressum">Impressum</Link>
@@ -26,7 +26,7 @@ export default function Footer(){
                 <>
                     <Link className={s.link} href="/impressum">Impressum</Link>
                     <p>
-                        ©{currentYear.toString() == "2023" ? "2023" : `2023 - ${currentYear}`} Matschschützenvereinigung Schaffhausen
+                        ©{currentYear.toString() == "2023" ? "2023" : `2023 - ${currentYear}`} Matchschützenvereinigung Schaffhausen
                     </p>
                     <Link className={s.link} href="/datenschutzerklaerung">Datenschutz</Link>
                 </>
