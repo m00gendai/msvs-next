@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import Header from '../components/header'
+import { useRouter } from 'next/router'
 import s from "../styles/Vorstand.module.css"
 import { boardmembers } from "../lib/vorstand"
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
@@ -7,14 +8,12 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 
 export default function Vorstand(){
 
+  const router = useRouter()
+    const headUrl = `https://msvs.ch${router.pathname}`
+
     return(
         <>
-      <Head>
-        <title>Matchschützenvereinigung Schaffhausen</title>
-        <meta name="description" content="Matchschützenvereinigung Schaffhausen" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Header title={"MSVS - Vorstand"} content={"MSVS - Vorstand"} url={headUrl} />
         <main>
         <section className={s.section}>
           <h2>Vorstand</h2> 
