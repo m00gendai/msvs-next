@@ -1,25 +1,32 @@
-import Head from 'next/head'
+import Header from '../components/header'
 import Image from "next/image"
+import Link from "next/link"
+import { useRouter } from 'next/router'
 import s from '../styles/Home.module.css'
 import Gruppenfoto from "../public/Gruppenfoto.jpg"
 import Logo from "../public/logo.gif"
 import News from "../components/News"
+import { useMediaQuery } from '@react-hook/media-query'
+import getFile from '../functions/getFile'
 
 export default function Home({   
-        sourceDirectoryList
+        sourceDirectoryList,
+        thatFile
     }) {
 
+const isMobile = useMediaQuery('only screen and (max-aspect-ratio: 13/9)')
+const router = useRouter()
+    const headUrl = `https://msvs.ch${router.pathname}`
   const latestFiles = sourceDirectoryList.data
 
   return (
     <>
-      <Head>
-        <title>Matchschützenvereinigung Schaffhausen</title>
-        <meta name="description" content="Matchschützenvereinigung Schaffhausen" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <h1 ><div className={s.logo}><Image src={Logo} fill /></div>Match<wbr/>schützen<wbr/>vereinigung Schaffhausen</h1>
+<Header title={"MSVS - Home"} content={"Matchschützenvereinigung Schaffhausen"} url={headUrl} />
+      {isMobile ?
+        <h1 ><div className={s.logo}><Image src={Logo} fill /></div>Matchschützenvereinigung Schaffhausen</h1>
+        :
+        <h1 ><div className={s.logo}><Image src={Logo} fill /></div>MSVS</h1>
+      }
         <main>
           
         <section className={s.section}>
@@ -28,9 +35,9 @@ export default function Home({
           <Image src={Gruppenfoto} fill/>   
           </div>        
             <div className={s.container}>
-              <button className={s.button}>Kantonalcup</button>
-              <button className={s.button}>Mitglied werden</button>
-              <button className={s.buttonLong}>Jubiläum</button>
+              <Link href="/kantonalcup" className={s.button}>Kantonalcup</Link>
+              <div className={s.button} onClick={()=>getFile(thatFile.data[0].id)}>Mitglied werden</div>
+              <Link href="/jubilaeum" className={s.buttonLong}>Jubiläum</Link>
             </div>
         </section>
         <section className={s.news}>
@@ -44,7 +51,7 @@ export default function Home({
 
 export async function getStaticProps() {
     // Gets all folders and files in the /Resultate directory recursively, sorted by last modified
-    const getSourceDirectoryList = await fetch(`https://api.infomaniak.com/2/drive/608492/files/search?directory_id=15646&depth=unlimited&order_by=added_at&order=desc&types[]=pdf&types[]=text&per_page=1000`, {
+    const getSourceDirectoryList = await fetch(`https://api.infomaniak.com/2/drive/608492/files/search?directory_id=15646&depth=unlimited&order_by=added_at&order=desc&types[]=pdf&types[]=spreadsheet&types[]=text&per_page=12`, {
         method: "GET",
         headers: {
             Authorization: `Bearer ${process.env.KDRIVE}`,
@@ -54,9 +61,20 @@ export async function getStaticProps() {
     })
     const sourceDirectoryList = await getSourceDirectoryList.json()
 
+    const getThatFile = await fetch(`https://api.infomaniak.com/2/drive/608492/files/16125/files`, {
+      method: "GET",
+        headers: {
+            Authorization: `Bearer ${process.env.KDRIVE}`,
+            "Content-Type" : "application/json"
+        },
+    })
+
+    const thatFile = await getThatFile.json()
+
     return { 
         props: {
-            sourceDirectoryList
+            sourceDirectoryList,
+            thatFile
         } , 
             revalidate: 2
     }

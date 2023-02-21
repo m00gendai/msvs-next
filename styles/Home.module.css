@@ -23,6 +23,16 @@ align-self: stretch;
   overflow: hidden;
 }
 
+@media only screen and (max-aspect-ratio: 13/9){
+  .section{
+    width:90%;
+  }
+  .news{
+    width:90%;
+    height: 30vh;
+  }
+}
+
 .image{
   position: relative;
   width: 100%;
@@ -69,9 +79,9 @@ align-self: stretch;
   justify-content: center;
   align-content: center;
   font-weight: 700;
+  text-decoration: none;
 }
 
-.button:hover,
-.buttonLong:hover{
+.button:hover{
   cursor: pointer;
 }
