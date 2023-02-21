@@ -28,7 +28,7 @@ export default function Footer(){
                     <p>
                         ©{currentYear.toString() == "2023" ? "2023" : `2023 - ${currentYear}`} Matchschützenvereinigung Schaffhausen
                     </p>
-                    <Link className={s.link} href="/datenschutzerklaerung">Datenschutz</Link>
+                    <Link className={s.link} href="/datenschutz">Datenschutz</Link>
                 </>
             }
             
