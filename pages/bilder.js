@@ -32,11 +32,13 @@ export default function Bilder(
       }
     }
 
-    function openSesame(id){
-      if(expand == null){
-        setExpand(id)
-      } else {
-        setExpand(null)
+    function openSesame(e, id){
+      if(e.target.className.includes("container") || e.target.tagName == "H3"){
+        if(expand == null){
+          setExpand(id)
+        } else {
+          setExpand(null)
+        }
       }
     }
 
@@ -59,8 +61,8 @@ export default function Bilder(
             images.map(item =>{
               if(item.type == "dir"){
                 return(
-                  <div className={s.container} onClick={()=>openSesame(item.id)} key={`container_${item.name}`}>
-                    <h3 >{item.name}</h3>
+                  <div className={s.container} onClick={(e)=>openSesame(e, item.id)} key={`container_${item.name}`}>
+                    <h3>{item.name}</h3>
                     {
                       expand == item.id ?
                       <div className={s.inner}>
