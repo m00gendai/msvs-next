@@ -18,12 +18,12 @@ export default function Links(){
           {
             links.map(link =>{
               return (
-                <div className={s.container}>
+                <div className={s.container} key={`container_${link.type}`}>
                   <h3>{link.type}</h3>
                   <div className={s.inner}>
                     {link.content.map(content =>{
                       return (
-                        <Link className={s.item} href={content.url} target={"_blank"}>
+                        <Link className={s.item} href={content.url} target={"_blank"} key={`item_${content.name}`}>
                           <div className={s.itemInner} style={{backgroundImage: `url("${content.img}")`}}>
                             <p>{content.name}</p>
                           </div>
