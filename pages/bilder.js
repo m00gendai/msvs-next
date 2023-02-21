@@ -59,8 +59,8 @@ export default function Bilder(
             images.map(item =>{
               if(item.type == "dir"){
                 return(
-                  <div className={s.container} key={`container_${item.name}`}>
-                    <h3 onClick={()=>openSesame(item.id)}>{item.name}</h3>
+                  <div className={s.container} onClick={()=>openSesame(item.id)} key={`container_${item.name}`}>
+                    <h3 >{item.name}</h3>
                     {
                       expand == item.id ?
                       <div className={s.inner}>
