@@ -7,7 +7,7 @@
     justify-content: center;
     align-items: center;
     z-index: 300;
-    min-height: 5vh;
+    min-height: 10vh;
     flex-wrap: wrap;
 }
 
@@ -26,8 +26,8 @@
 
 .menu{
     position: absolute;
-    top: 1.25vh;
-    right: 2.5vh;
+    top: 2.5vh;
+    right: 5vh;
     display: flex;
     justify-content: flex-end;
     align-items: center;
