@@ -86,6 +86,7 @@ export default function Bilder(
               }
             })
           }
+          <Link className="archiv" href={`https://kdrive.infomaniak.com/app/share/608492/706273c5-d6e6-4aec-81f7-e0f4d865aca3`} target={`_blank`} ><h3>Archiv</h3></Link>
         </section>
         </main>
 
