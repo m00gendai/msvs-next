@@ -8,8 +8,18 @@ export default function News({items}){
         <h2>News</h2>
         <div className={s.inner}>
             {items.map(item =>{
-                const name = item.name.replaceAll("_", " ").replace(".pdf", "")
-                return <div className={s.item} key={item.id} onClick={()=>getFile(item.id)}>{name}</div>
+                const name = item.name
+                    .replaceAll("_", " ")
+                    .replace(".pdf", "")
+                    .replace(".xlsx", "")
+                    .replace(".xls", "")
+                    .replace(".docx", "")
+                    .replace(".doc", "")
+                return (
+                    <div className={s.item} key={item.id} onClick={()=>getFile(item.id)}>
+                        <p>{name}</p>
+                    </div>
+                )
             })}
         </div>
         </div>
