@@ -9,7 +9,7 @@ export default function News({items}){
         <div className={s.inner}>
             {items.map(item =>{
                 const name = item.name.replaceAll("_", " ").replace(".pdf", "")
-                return <p key={item.id} onClick={()=>getFile(item.id)}>{name}</p>
+                return <div className={s.item} key={item.id} onClick={()=>getFile(item.id)}>{name}</div>
             })}
         </div>
         </div>
