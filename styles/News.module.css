@@ -12,7 +12,8 @@
     position: relative;
     display: flex;
     align-content: flex-start;
-    width: 90%;
+    width: 100%;
+    padding: 0.5rem;
     flex-wrap: wrap;
     overflow-y: scroll;
     height: 100%;
@@ -20,20 +21,30 @@
 
 .item{
     width: 100%;
-    margin: 0;
+    margin: 0.5rem;
     aspect-ratio: 3/1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem;
+}
+
+.item p{
+    width: 90%;
 }
 
 .item:nth-child(even){
     background: lightgrey;
 }
+.item:nth-child(odd) {
+    background: silver;
+}
 
-.item:last-child{
-    margin: 0 0 4.5rem 0;
+.item:last-child {
+    margin: 0.5rem 0.5rem 20% 0.5rem;
+}
+
+.item:hover{
+    cursor: pointer;
 }
 
 .h2{
