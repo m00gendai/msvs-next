@@ -37,12 +37,12 @@ export default function Navbar_Mobile(){
                 visible ?
                     <LocalDiningIcon sx={{
                         color: "white",
-                        fontSize: "3vh"
+                        fontSize: "5vh"
                     }}/>
                 :
                     <LunchDiningIcon sx={{
                         color: "white",
-                        fontSize: "3vh"
+                        fontSize: "5vh"
                     }}/>
                 }
             </div>
