@@ -33,10 +33,10 @@
 }
 
 .item:nth-child(even){
-    background: lightgrey;
+    background: #f5f5f5;
 }
 .item:nth-child(odd) {
-    background: silver;
+    background: #e5e5e5;
 }
 
 .item:last-child {
@@ -45,6 +45,7 @@
 
 .item:hover{
     cursor: pointer;
+    box-shadow: 0px 0px 1px 0px black;
 }
 
 .h2{
