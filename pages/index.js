@@ -23,9 +23,9 @@ const router = useRouter()
     <>
 <Header title={"MSVS - Home"} content={"Matchschützenvereinigung Schaffhausen"} url={headUrl} />
       {isMobile ?
-        <h1 ><div className={s.logo}><Image src={Logo} fill /></div>Matchschützenvereinigung Schaffhausen</h1>
+        null
         :
-        <h1 ><div className={s.logo}><Image src={Logo} fill /></div>MSVS</h1>
+        <h1 ><div className={s.logo}><Image src={Logo} fill /></div>Matchschützenvereinigung Schaffhausen</h1>
       }
         <main>
           
