@@ -32,6 +32,12 @@ export default function Navbar_Mobile(){
 
     return(
         <nav className ={s.nav}> 
+        {
+            visible ?
+                null
+            :
+                <div className={s.homeLink}><Link className={s.homeLinkLogo} href="/"></Link>MSVS</div>
+            }   
             <div className={s.menu} onClick={(e)=>handleSubMenuTrigger(e)}>
                 {
                 visible ?
