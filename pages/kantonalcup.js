@@ -15,7 +15,7 @@ export default function Kantonalcup(
 
 
     const date = new Date()
-    const currentYear = 2024 //date.getFullYear()
+    const currentYear = date.getFullYear()
 
     const router = useRouter()
     const headUrl = `https://msvs.ch${router.pathname}`
