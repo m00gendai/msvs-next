@@ -15,7 +15,7 @@ export default function Kantonalcup(
 
 
     const date = new Date()
-    const currentYear = 2023 //date.getFullYear()
+    const currentYear = 2024 //date.getFullYear()
 
     const router = useRouter()
     const headUrl = `https://msvs.ch${router.pathname}`
@@ -217,8 +217,6 @@ console.log(finalTree)
                 <h3>{`Kombinationen & Resultate ${currentYear}`}</h3>
                 {console.log(finalTree)}
                 {
-                  typeof finalTree[finalTree.length-1][0] == undefined ?
-                  <p className="noEntry">Kombinationen sind noch nicht bekannt.</p> :
                   finalTree.map((entry, index) =>{
                     if(Object.values(entry)[0].length > 0){
                       return(
