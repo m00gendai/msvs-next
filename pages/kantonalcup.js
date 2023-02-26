@@ -15,7 +15,7 @@ export default function Kantonalcup(
 
 
     const date = new Date()
-    const currentYear = date.getFullYear()
+    const currentYear = 2023 //date.getFullYear()
 
     const router = useRouter()
     const headUrl = `https://msvs.ch${router.pathname}`
@@ -24,6 +24,10 @@ export default function Kantonalcup(
         const x = a.added_at
         const y = b.added_at
         return x < y ? 1 : x > y ? -1 : 0
+    })
+
+    const docFolder = results.filter(result =>{
+      return result.type == "dir" && result.name == currentYear.toString()
     })
 
     /* 
@@ -68,12 +72,18 @@ export default function Kantonalcup(
     the files correctly.
     */
 
+    function assemble(){
+
     // First, the directory id of the current year is filtered
     const currentYearDir = results.filter(result =>{
       if(result.type == "dir" && result.name == currentYear.toString()){
         return result
       }
     })
+
+    if(currentYearDir[0] == undefined){
+      return []
+    }
 
     // Then, the "Kombinationen" directory of the current year is filtered
     const comboDir = results.filter(result =>{
@@ -137,10 +147,14 @@ export default function Kantonalcup(
         return x > y ? 1 : x < y ? -1 : 0
     })
 
+    return chrono
+  }
+
     // And since an ascending sorting would result in Resultate coming before Kombinationen, the whole thing has to be reversed.
-    const finalTree = chrono.reverse()
+    const finalTree = assemble().reverse()
+console.log(finalTree)
     // This leaves us with an array with the order Resultate n, Kombinationen n, Resultate n-1, ..., Resultate 1, Kombinationen 1.
-    
+
     function fileRenamer(name){
       // Assumes that the files are always (more or less) named the same across years. Fallback is original filename
       if(name.includes("Kat-S")){
@@ -160,7 +174,6 @@ export default function Kantonalcup(
       }
     }
 
-
     return(
         <>
         <Header title={"MSVS - Kantonalcup Schaffhausen"} content={"Schaffhauser Kantonalcup"} url={headUrl} />
@@ -169,23 +182,26 @@ export default function Kantonalcup(
                 <h2>Kantonalcup</h2> 
                 <h3>{`Dokumente ${currentYear}`}</h3>
                 {
+                  docFolder.length == 0 ?
+                  <p className="noEntry">Noch keine Dokumente vorhanden.</p> :
+                   <div className={s.results} key={`einladungFragment`}>
+                                  <div className={s.container} key={`einladungContainer`}>
+                                    {
                   results.map(result =>{
                     if(result.type == "dir" && result.name == currentYear.toString()){ 
-                      return results.map(result2 =>{
-                        if(result2.type == "dir" && result2.name == "Dokumente" && result2.parent_id == result.id){
+                      return results.map(result2 =>{                     
+                        if(result2.type == "dir" && result2.name == "Dokumente" && result2.parent_id == result.id){                  
                           return results.map(result3 =>{
                             if(result3.type == "file" && result3.parent_id == result2.id){
                               const name = result3.name.replaceAll("_", " ").replace(".pdf", "").replace(".doc", "")
                               return (
-                                <div className={s.results} key={`einladungFragment_${result.id}`}>
-                                  <div className={s.container} key={`einladungContainer_${result.id}`}>
+                               
                                     <div key={`einladung_${result3.id}`} className={s.item} onClick={()=>getFile(result3.id, setShow)}>
                                       <div className={s.text}>
                                         {name}
                                       </div>
                                     </div>
-                                  </div>
-                                </div>
+                                 
                               )
                             }
                           })
@@ -194,19 +210,25 @@ export default function Kantonalcup(
                     } 
                   })
                 }
+                 </div>
+                                </div>
+                }
                   
                 <h3>{`Kombinationen & Resultate ${currentYear}`}</h3>
+                {console.log(finalTree)}
                 {
+                  typeof finalTree[finalTree.length-1][0] == undefined ?
+                  <p className="noEntry">Kombinationen sind noch nicht bekannt.</p> :
                   finalTree.map((entry, index) =>{
                     if(Object.values(entry)[0].length > 0){
                       return(
-                        <div className={s.results} key={`einladungFragment_${Object.values(entry)}`}>
-                          <h4 key={`imageTitle_${index}`}>
+                        <div className={s.results} key={`treeFragment_${index}`}>
+                          <h4 key={`treeTitle_${index}`}>
                             {Object.keys(entry) == `Kombination Runde ${finalTree.length/2}` ? "Kombination Finale" : 
                             Object.keys(entry) == `Resultat Runde ${finalTree.length/2}` ? "Resultat Finale" :
                             Object.keys(entry)}
                           </h4>
-                          <div className={s.container} key={`einladungContainer_${Object.values(entry)}`}>
+                          <div className={s.container} key={`treeContainer_${index}`}>
                             {Object.values(entry)[0].map(item =>{
                               return (
                                 <div key={`einladung_${item.id}`} className={s.item} onClick={()=>getFile(item.id, setShow)}>
@@ -222,7 +244,7 @@ export default function Kantonalcup(
                     }
                   })
                 }
-                                       
+                                     
                 <Link className="archiv" href={`https://kdrive.infomaniak.com/app/share/608492/57f5c34e-9fe5-44fc-ad11-98676963674b`} target={`_blank`} ><h3>Archiv</h3></Link>
             </section>
         </main>
