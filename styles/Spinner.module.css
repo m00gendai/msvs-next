@@ -1,0 +1,85 @@
+.veil {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg{
+    position: absolute;
+    aspect-ratio: 1/1;
+    width: 15rem;
+    background: rgba(0,0,0,0.7);
+    border-radius: 180px;
+}
+
+.red,
+.orange,
+.yellow,
+.green,
+.blue,
+.indigo,
+.violet{
+    position: absolute;
+    aspect-ratio: 1/1;
+    background: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation-name: spin;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-timing-function: linear;
+    border: 2px solid white;
+}
+
+.red{
+    box-shadow: 0px 0px 5px 2px #ff0000, inset 0px 0px 5px 2px #ff0000;
+    animation-duration: 1s;
+    width: 4rem;
+}
+.orange{
+    box-shadow: 0px 0px 5px 2px #FF7F00, inset 0px 0px 5px 2px #FF7F00;
+    animation-duration: 1.5s;
+    width: 5rem;
+}
+.yellow{
+    box-shadow: 0px 0px 5px 2px #ffff00, inset 0px 0px 5px 2px #ffff00;
+    animation-duration: 2s;
+    width: 6rem;
+}
+.green {
+    box-shadow: 0px 0px 5px 2px #00ff00, inset 0px 0px 5px 2px #00ff00;
+    animation-duration: 2.5s;
+    width: 7rem;
+}
+.blue {
+    box-shadow: 0px 0px 5px 2px #0000ff, inset 0px 0px 5px 2px #0000ff;
+    animation-duration: 3s;
+    width: 8rem;
+}
+.indigo{
+    box-shadow: 0px 0px 5px 2px #4b0082, inset 0px 0px 5px 2px #4b0082;
+    animation-duration: 3.5s;
+    width: 9rem;
+}
+.violet{
+    box-shadow: 0px 0px 5px 2px #9400d3, inset 0px 0px 5px 2px #9400d3;
+    animation-duration: 4s;
+    width: 10rem;
+}
+
+@keyframes spin{
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
