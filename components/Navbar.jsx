@@ -40,7 +40,7 @@ export default function Navbar(){
                         <Link className={s.sublink} href="/vorstand">Vorstand</Link>
                         <Link className={s.sublink} href="/jubilaeum">Jubiläum</Link>
                         <Link className={s.sublink} href="/bilder">Bilder</Link>
-                        <Link className={s.sublink} href="/protokolle">Protokolle</Link>
+                        <Link className={s.sublink} href="/dokumente">Dokumente</Link>
                     </div>
                     : null}
                 </div>

@@ -65,7 +65,7 @@ export default function Navbar_Mobile(){
                         <Link className={s.link} onClick={(e)=>handleSubMenuTrigger(e)} href="/vorstand">Vorstand</Link>
                         <Link className={s.link} onClick={(e)=>handleSubMenuTrigger(e)} href="/jubilaeum">Jubiläum</Link>
                         <Link className={s.link} onClick={(e)=>handleSubMenuTrigger(e)} href="/bilder">Bilder</Link>
-                        <Link className={s.link} onClick={(e)=>handleSubMenuTrigger(e)} href="/protokolle">Protokolle</Link>
+                        <Link className={s.link} onClick={(e)=>handleSubMenuTrigger(e)} href="/dokumente">Dokumente</Link>
                     </div>
                     <Link className={s.link} onClick={(e)=>handleSubMenuTrigger(e)} href="/links">Links</Link>
                 </div>
