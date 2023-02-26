@@ -26,9 +26,38 @@ export default function Kantonalcup(
         return x < y ? 1 : x > y ? -1 : 0
     })
 
-    const docFolder = results.filter(result =>{
-      return result.type == "dir" && result.name == currentYear.toString()
-    })
+    // This function checks if there are any documents to display in Dokumente
+    function getDocs(){
+      const currentYearDocDir = results.filter(result =>{
+        return result.type == "dir" && result.name == currentYear.toString()
+      })
+
+      // If there is no current year folder in Kantonalcup, return 
+      if(currentYearDocDir.length == 0){
+        return 0
+      }
+
+      const docFolder = results.filter(result =>{
+        return result.type == "dir" && result.parent_id == currentYearDocDir[0].id && result.name == "Dokumente"
+      })
+      
+      // If there is no Dokumente folder in the current year folder, return
+      if(docFolder.length == 0){
+        return 0
+      }
+
+      const docs = results.filter(result =>{
+        return result.type == "file" && result.parent_id == docFolder[0].id
+      })
+
+      // If there are no documents in the Dokumente Folder, return
+      if(docs.length == 0){
+        return 0
+      }
+     
+      // else return the documents
+      return docs
+    }
 
     /* 
     The nature of the Kantonalcup is that of a knockout tournament. This means, that there are several rounds with
@@ -75,14 +104,14 @@ export default function Kantonalcup(
     function assemble(){
 
     // First, the directory id of the current year is filtered
-    const currentYearDir = results.filter(result =>{
+    let currentYearDir = results.filter(result =>{
       if(result.type == "dir" && result.name == currentYear.toString()){
         return result
       }
     })
 
     if(currentYearDir[0] == undefined){
-      return []
+      return 0
     }
 
     // Then, the "Kombinationen" directory of the current year is filtered
@@ -105,10 +134,15 @@ export default function Kantonalcup(
       const files = results.filter(result =>{
         if(result.type == "file" && result.parent_id == combo.id){
           return result
-        }
+        } 
       })
       return {[`Kombination ${combo.name == "Finale" ? `Runde ${comboDirs.length}` : combo.name}`]: files}
     })
+
+    // If there are no combo files, return
+    if(Object.values(combos[combos.length-1])[0].length == 0){
+      return 0
+    }
 
     //Now the whole shebang again, but with "Resultate"
     const resultDir = results.filter(result =>{
@@ -151,8 +185,10 @@ export default function Kantonalcup(
   }
 
     // And since an ascending sorting would result in Resultate coming before Kombinationen, the whole thing has to be reversed.
-    const finalTree = assemble().reverse()
-console.log(finalTree)
+    
+    // If there were no combo files, assign 0, else reverse the generated array
+    const finalTree = assemble() == 0 ? 0 : assemble().reverse()
+
     // This leaves us with an array with the order Resultate n, Kombinationen n, Resultate n-1, ..., Resultate 1, Kombinationen 1.
 
     function fileRenamer(name){
@@ -182,8 +218,8 @@ console.log(finalTree)
                 <h2>Kantonalcup</h2> 
                 <h3>{`Dokumente ${currentYear}`}</h3>
                 {
-                  docFolder.length == 0 ?
-                  <p className="noEntry">Noch keine Dokumente vorhanden.</p> :
+                  getDocs() == 0 ?
+                  <p className="noEntry">Noch sind keine Dokumente vorhanden.</p> :
                    <div className={s.results} key={`einladungFragment`}>
                                   <div className={s.container} key={`einladungContainer`}>
                                     {
@@ -215,8 +251,9 @@ console.log(finalTree)
                 }
                   
                 <h3>{`Kombinationen & Resultate ${currentYear}`}</h3>
-                {console.log(finalTree)}
                 {
+                   finalTree == 0 ?
+                  <p className="noEntry">Noch sind keine Kombinationen ausgelost worden.</p> :
                   finalTree.map((entry, index) =>{
                     if(Object.values(entry)[0].length > 0){
                       return(
