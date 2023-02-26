@@ -7,10 +7,13 @@ import getFile from "../functions/getFile"
 
 export default function Gewehr(
     {
+        setShow,
         sourceDirectoryList, 
         images
     }
     ){
+
+ 
 
     const date = new Date()
     const currentYear = date.getFullYear()
@@ -54,7 +57,7 @@ export default function Gewehr(
                                                     if(result3.type == "file" && result3.parent_id == result2.id){
                                                         const name = result3.name.replaceAll("_", " ").replace(".pdf", "").replace(".doc", "")
                                                         return (
-                                                            <div key={`einladung_${result3.id}`} className={s.item} onClick={()=>getFile(result3.id)}>
+                                                            <div key={`einladung_${result3.id}`} className={s.item} onClick={()=>getFile(result3.id, setShow)}>
                                                                 <div className={s.text}>
                                                                     {name}
                                                                 </div>
@@ -102,7 +105,7 @@ export default function Gewehr(
                                                         const name = result3.name.replaceAll("_", " ").replace(".pdf", "")
                                                         if(!result3.mime_type.startsWith("image")){
                                                             return(
-                                                                <div key={`result_${result3.id}`} className={s.item} onClick={()=>getFile(result3.id)}>
+                                                                <div key={`result_${result3.id}`} className={s.item} onClick={()=>getFile(result3.id, setShow)}>
                                                                     <div className={s.text}>
                                                                         {name}
                                                                     </div>

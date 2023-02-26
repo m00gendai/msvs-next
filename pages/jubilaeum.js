@@ -5,7 +5,9 @@ import Header from "../components/header"
 import s from "../styles/Jubilaeum.module.css"
 import getFile from "../functions/getFile"
 
+
 export default function Jubiläum({
+  setShow,
   sourceDirectoryList
 }){
 
@@ -47,7 +49,7 @@ export default function Jubiläum({
                       if(item2.parent_id == item.id){
                         const name = item2.name.replaceAll("_", " ").replace(".pdf", "").replace(".doc", "")
                                                         return (
-                                                            <div key={`einladung_${item2.id}`} className={s.item} onClick={()=>getFile(item2.id)}>
+                                                            <div key={`einladung_${item2.id}`} className={s.item} onClick={()=>getFile(item2.id, setShow)}>
                                                                 <div className={s.text}>
                                                                     {name}
                                                                 </div>

@@ -4,10 +4,11 @@ import { useRouter } from 'next/router'
 import Header from "../components/header"
 import s from "../styles/Page.module.css"
 import getFile from "../functions/getFile"
-import { TheaterComedy } from "@mui/icons-material"
+
 
 export default function Lupi(
   {
+    setShow,
     sourceDirectoryList
   } 
 ){
@@ -103,7 +104,7 @@ export default function Lupi(
                                             if(result3.type == "file" && result3.parent_id == result2.id){
                                                 const name = result3.name.replaceAll("_", " ").replace(".pdf", "").replace(".doc", "")
                                                 return (
-                                                    <div key={`einladung_${result3.id}`} className={s.item} onClick={()=>getFile(result3.id)}>
+                                                    <div key={`einladung_${result3.id}`} className={s.item} onClick={()=>getFile(result3.id, setShow)}>
                                                         <div className={s.text}>
                                                             {name}
                                                         </div>
@@ -133,7 +134,7 @@ export default function Lupi(
                         if(result2.type == "file" && result2.parent_id == result.id){
                           const name = result2.name.replaceAll("_", " ").replace(".pdf", "")
                           return(
-                            <div key={`result_${result2.id}`} className={s.item} onClick={()=>getFile(result2.id)}>
+                            <div key={`result_${result2.id}`} className={s.item} onClick={()=>getFile(result2.id, setShow)}>
                               <div className={s.text}>
                                 {name}
                               </div>
@@ -164,7 +165,7 @@ export default function Lupi(
                               if(result4.type == "file" && result4.parent_id == result3.id){
                                 const name = result4.name.replaceAll("_", " ").replace(".pdf", "")
                                 return(
-                                  <div key={`result_${result4.id}`} className={s.item} onClick={()=>getFile(result4.id)}>
+                                  <div key={`result_${result4.id}`} className={s.item} onClick={()=>getFile(result4.id, setShow)}>
                                     <div className={s.text}>
                                       {name}
                                     </div>

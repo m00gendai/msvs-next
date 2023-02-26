@@ -5,11 +5,12 @@ import Header from "../components/header"
 import s from "../styles/Protokolle.module.css"
 import getFile from "../functions/getFile"
 
+
 export default function Protokolle({
+    setShow,
   sourceDirectoryList
 }){
 
-  console.log(sourceDirectoryList)
 
     const date = new Date()
     const currentYear = 2022 // date.getFullYear()
@@ -36,7 +37,7 @@ export default function Protokolle({
                
                         const name = item.name.replaceAll("_", " ").replace(".pdf", "").replace(".doc", "")
                                                         return (
-                                                            <div key={`einladung_${item.id}`} className={s.item} onClick={()=>getFile(item.id)}>
+                                                            <div key={`einladung_${item.id}`} className={s.item} onClick={()=>getFile(item.id, setShow)}>
                                                                 <div className={s.text}>
                                                                     {name}
                                                                 </div>

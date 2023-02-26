@@ -9,7 +9,9 @@ import News from "../components/News"
 import { useMediaQuery } from '@react-hook/media-query'
 import getFile from '../functions/getFile'
 
-export default function Home({   
+
+export default function Home({
+  setShow,   
         sourceDirectoryList,
         thatFile
     }) {
@@ -25,23 +27,22 @@ const router = useRouter()
       {isMobile ?
         null
         :
-        <h1 ><div className={s.logo}><Image src={Logo} fill /></div>Matchschützenvereinigung Schaffhausen</h1>
+        <h1 ><div className={s.logo}><Image src={Logo} alt="MSVS Logo" fill /></div>Matchschützenvereinigung Schaffhausen</h1>
       }
         <main>
-          
         <section className={s.section}>
           <h2>Home</h2> 
           <div className={s.image}>
-          <Image src={Gruppenfoto} fill/>   
+          <Image src={Gruppenfoto} fill alt="Gruppenbild MSVS"/>   
           </div>        
             <div className={s.container}>
               <Link href="/kantonalcup" className={s.button}>Kantonalcup</Link>
-              <div className={s.button} onClick={()=>getFile(thatFile.data[0].id)}>Mitglied werden</div>
+              <div className={s.button} onClick={()=>getFile(thatFile.data[0].id, setShow)}>Mitglied werden</div>
               <Link href="/jubilaeum" className={s.buttonLong}>Jubiläum</Link>
             </div>
         </section>
         <section className={s.news}>
-          <News items={latestFiles}/>
+          <News setShow={setShow} items={latestFiles}/>
         </section>
         </main>
 

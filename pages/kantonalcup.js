@@ -4,13 +4,15 @@ import { useRouter } from 'next/router'
 import Header from "../components/header"
 import s from "../styles/KC.module.css"
 import getFile from "../functions/getFile"
-import { EmojiObjects } from "@mui/icons-material"
+
 
 export default function Kantonalcup(
     {
+      setShow,
         sourceDirectoryList
     }
     ){
+
 
     const date = new Date()
     const currentYear = date.getFullYear()
@@ -177,7 +179,7 @@ export default function Kantonalcup(
                               return (
                                 <div className={s.results} key={`einladungFragment_${result.id}`}>
                                   <div className={s.container} key={`einladungContainer_${result.id}`}>
-                                    <div key={`einladung_${result3.id}`} className={s.item} onClick={()=>getFile(result3.id)}>
+                                    <div key={`einladung_${result3.id}`} className={s.item} onClick={()=>getFile(result3.id, setShow)}>
                                       <div className={s.text}>
                                         {name}
                                       </div>
@@ -207,7 +209,7 @@ export default function Kantonalcup(
                           <div className={s.container} key={`einladungContainer_${Object.values(entry)}`}>
                             {Object.values(entry)[0].map(item =>{
                               return (
-                                <div key={`einladung_${item.id}`} className={s.item} onClick={()=>getFile(item.id)}>
+                                <div key={`einladung_${item.id}`} className={s.item} onClick={()=>getFile(item.id, setShow)}>
                                     <div className={s.text}>
                                         {fileRenamer(item.name)}
                                     </div>
