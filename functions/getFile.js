@@ -1,4 +1,5 @@
-export default function getFile(id){
+export default function getFile(id, setShow){
+   setShow == null ? null : setShow(true)
     const setFileId = async function(){
         let file = {"file_id" : id}
 
@@ -15,6 +16,7 @@ export default function getFile(id){
     }
     
     setFileId().then((data) =>{
+        setShow == null ? null : setShow(false)
         window.open(data.url, "_blank")
     })
 }
