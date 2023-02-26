@@ -26,7 +26,7 @@ export default function Dokumente({
 
     return(
         <>
-      <Header title={"MSVS - Protokolle"} content={"MSVS - Protokolle"} url={headUrl} />
+      <Header title={"MSVS - Dokumente"} content={"MSVS - Dokumente"} url={headUrl} />
         <main>
         <section className={s.section}>
           <h2>Dokumente</h2> 
@@ -41,7 +41,13 @@ export default function Dokumente({
                                     {
                                         results.map(item =>{
                                             if(item.type == "file" && item.parent_id == result.id){
-                                                const name = item.name.replaceAll("_", " ").replace(".pdf", "").replace(".doc", "")
+                                                const name = item.name
+                                                    .replaceAll("_", " ")
+                                                    .replace(".pdf", "")
+                                                    .replace(".docx", "")
+                                                    .replace(".doc", "")
+                                                    .replace(".xlsx", "")
+                                                    .replace(".xls", "")
                                                 return (
                                                     <div key={`item_${item.id}`} className={s.item} onClick={()=>getFile(item.id, setShow)}>
                                                         <div className={s.text}>
@@ -70,7 +76,7 @@ export default function Dokumente({
 export async function getStaticProps() {
 
     // Gets all folders and files in the /Resultate directory recursively, sorted by last modified
-    const getSourceDirectoryList = await fetch("https://api.infomaniak.com/2/drive/608492/files/search?directory_id=15932&depth=unlimited&per_page=1000", {
+    const getSourceDirectoryList = await fetch("https://api.infomaniak.com/2/drive/608492/files/search?directory_id=16124&depth=unlimited&per_page=1000", {
         method: "GET",
         headers: {
             Authorization: `Bearer ${process.env.KDRIVE}`,
