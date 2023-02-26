@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import Link from "next/link"
 import Navbar from "../components/Navbar"
 import Navbar_Mobile from "../components/navbar_mobile"
 import Footer from "../components/Footer"
@@ -29,7 +30,7 @@ export default function App({ Component, pageProps }) {
   style={{ background: "rgba(0,0,0,1)" }}
   buttonStyle={{ color: "black", fontSize: "13px", background: "yellow"}}
 >
-  Wir verwenden Cookies. Sie kennen das. Details in der <a href="/datenschutz">Datenschutzerklärung</a>
+  Wir verwenden Cookies. Sie kennen das. Details in der <Link href="/datenschutz">Datenschutzerklärung</Link>
 </CookieConsent>
     </>
   ) 
