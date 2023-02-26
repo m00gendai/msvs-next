@@ -35,6 +35,14 @@ export default function Gewehr(
         return item.parent_id
     })
 
+    const einladungen = results.filter(result =>{
+        return result.type == "dir" && isNaN(parseInt(result.name)) && currentYearDirIds.includes(result.id) && result.name == "Einladungen"
+    })
+
+    const resultate = results.filter(result =>{
+       return result.type == "dir" && isNaN(parseInt(result.name)) && currentYearDirIds.includes(result.id) && result.name != "Einladungen"
+    })
+
     return(
         <>
         <Header title={"MSVS - Gewehr"} content={"MSVS Gewehr"} url={headUrl} />
@@ -43,6 +51,8 @@ export default function Gewehr(
                 <h2>Gewehr</h2> 
                 <h3>{`Einladungen ${currentYear}`}</h3>
                 {
+                    einladungen.length == 0 ?
+                    <p className ="noEntry">Noch keine Einladungen dieses Jahr.</p> :
                     results.map(result =>{
                         if(result.type == "dir" && isNaN(parseInt(result.name)) && currentYearDirIds.includes(result.id) && result.name == "Einladungen"){ 
                         /* If directory AND the directory name is not a number AND there is a subdirectory with the name of the current 
@@ -71,11 +81,13 @@ export default function Gewehr(
                                     </div>
                                 </div>
                             )
-                        }
+                        } 
                     })
                 }
                 <h3>{`Resultate ${currentYear}`}</h3>
                 {
+                    resultate.length == 0 ?
+                    <p className="noEntry">Noch keine Resultate dieses Jahr.</p> :
                     results.map(result =>{
                         if(result.type == "dir" && isNaN(parseInt(result.name)) && currentYearDirIds.includes(result.id) && result.name != "Einladungen"){ 
                         /* If directory AND the directory name is not a number AND there is a subdirectory with the name of the current 

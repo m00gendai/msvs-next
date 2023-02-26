@@ -34,6 +34,14 @@ export default function Pistole(
         return item.parent_id
     })
 
+    const einladungen = results.filter(result =>{
+        return result.type == "dir" && isNaN(parseInt(result.name)) && currentYearDirIds.includes(result.id) && result.name == "Einladungen"
+    })
+
+    const resultate = results.filter(result =>{
+       return result.type == "dir" && isNaN(parseInt(result.name)) && currentYearDirIds.includes(result.id) && result.name != "Einladungen"
+    })
+
     return(
         <>
         <Header title={"MSVS - Pistole"} content={"MSVS Pistole"} url={headUrl} />
@@ -42,6 +50,8 @@ export default function Pistole(
                 <h2>Pistole</h2> 
                 <h3>{`Einladungen ${currentYear}`}</h3>
                 {
+                    einladungen.length == 0 ?
+                    <p className ="noEntry">Noch keine Einladungen dieses Jahr.</p> :
                     results.map(result =>{
                         if(result.type == "dir" && isNaN(parseInt(result.name)) && currentYearDirIds.includes(result.id) && result.name == "Einladungen"){ 
                         /* If directory AND the directory name is not a number AND there is a subdirectory with the name of the current 
@@ -75,6 +85,8 @@ export default function Pistole(
                 }
                 <h3>{`Resultate ${currentYear}`}</h3>
                 {
+                    resultate.length == 0 ?
+                    <p className="noEntry">Noch keine Resultate dieses Jahr.</p> :
                     results.map(result =>{
                         if(result.type == "dir" && isNaN(parseInt(result.name)) && currentYearDirIds.includes(result.id) && result.name != "Einladungen"){ 
                         /* If directory AND the directory name is not a number AND there is a subdirectory with the name of the current 
