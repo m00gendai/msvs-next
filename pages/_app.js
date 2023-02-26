@@ -5,6 +5,7 @@ import Footer from "../components/Footer"
 import { useMediaQuery } from '@react-hook/media-query'
 import { useState } from "react"
 import Spinner from "../components/Spinner"
+import CookieConsent from "react-cookie-consent";
 
 export default function App({ Component, pageProps }) {
 
@@ -21,6 +22,15 @@ export default function App({ Component, pageProps }) {
     {show ? <Spinner /> : null }
     <Component setShow={setShow} {...pageProps} />
     <Footer />
+    <CookieConsent
+  location="bottom"
+  buttonText="Verstanden"
+  cookieName="MSVS_Cookie"
+  style={{ background: "rgba(0,0,0,1)" }}
+  buttonStyle={{ color: "black", fontSize: "13px", background: "yellow"}}
+>
+  Wir verwenden Cookies. Sie kennen das. Details in der <a href="/datenschutz">Datenschutzerklärung</a>
+</CookieConsent>
     </>
   ) 
 }
