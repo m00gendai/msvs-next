@@ -56,3 +56,9 @@
     cursor:pointer;
     background:gold;
 }
+
+.image{
+    position: relative;
+    max-width: 90%;
+    max-height: 250px;
+}
