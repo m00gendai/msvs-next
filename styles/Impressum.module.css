@@ -11,6 +11,7 @@
 
 .section > p {
     width: 90%;
+    white-space: pre-line;
 }
 
 .section > p:last-child{
