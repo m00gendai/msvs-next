@@ -31,13 +31,12 @@ export default function Impressum(){
                     </div>
                     <div className={s.containerItem}>
                         <strong className={s.strong}>Hosting Webseite</strong>
-                        <p>Netlify, Inc.</p>
-                        <p>44 Montgomery Street</p>
-                        <p>Suite 300</p>
-                        <p>San Francisco</p>
-                        <p>California 94104</p>
+                        <p>Vercel Inc.</p>
+                        <p>440 N Barranca Ave #4133</p>
+                        <p>Covina</p>
+                        <p>California 91723</p>
                         <p>USA</p>
-                        <Link className={s.link} href="https://www.netlify.com/" target="_blank">https://www.netlify.com/</Link>
+                        <Link className={s.link} href="https://vercel.com/" target="_blank">https://vercel.com/</Link>
                     </div>
                     <div className={s.containerItem}>
                         <strong className={s.strong}>Hosting Dokumente</strong>
