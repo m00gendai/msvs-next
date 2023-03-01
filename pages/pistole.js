@@ -101,7 +101,7 @@ export default function Pistole(
                                             if(result2.type == "dir" && result2.name == currentYear.toString() && result2.parent_id == result.id){
                                                 return images.map(img =>{
                                                     if(img.parent == result2.id){
-                                                        return <img src={`data:$;base64, ${img.string}`} height={"250"} key={`imageItem_${img.id}`}/>
+                                                        return <img className={s.image} src={`data:$;base64, ${img.string}`} key={`imageItem_${img.id}`}/>
                                                     }
                                                 })
                                             }

@@ -171,7 +171,7 @@ export default function Lupi(
                             {
                                 images.map(img =>{
                                             if(img.parent == result3.id){
-                                                return <img src={`data:$;base64, ${img.string}`} height={"250"} key={`imageItem_${img.id}`}/>
+                                                return <img className={s.image} src={`data:$;base64, ${img.string}`} key={`imageItem_${img.id}`}/>
                                             }
                                         })
                                    
