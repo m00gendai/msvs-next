@@ -9,7 +9,8 @@ import getFile from "../functions/getFile"
 export default function Lupi(
   {
     setShow,
-    sourceDirectoryList
+    sourceDirectoryList,
+    images
   } 
 ){
 
@@ -165,18 +166,30 @@ export default function Lupi(
                       return(
                         <div className={s.results} key={`resultFragment_${result3.id}`}>
                           <h4 key={`resultTitle_${result2.id}`}>{result2.name}</h4>
+                          <div key={`imageContainer_${result.name}`} className={s.imageContainer}>
+                            {
+                                images.map(img =>{
+                                            if(img.parent == result3.id){
+                                                return <img src={`data:$;base64, ${img.string}`} height={"250"} key={`imageItem_${img.id}`}/>
+                                            }
+                                        })
+                                   
+                            }
+                          </div>
                           <div key={`linkContainer_${result2.name}`} className={s.container}>
                           {
-                            results.map(result4 =>{
-                              if(result4.type == "file" && result4.parent_id == result3.id){
-                                const name = result4.name.replaceAll("_", " ").replace(".pdf", "")
+                            results.map(result5 =>{
+                              if(result5.type == "file" && result5.parent_id == result3.id){
+                                if(!result5.mime_type.startsWith("image")){
+                                const name = result5.name.replaceAll("_", " ").replace(".pdf", "")
                                 return(
-                                  <div key={`result_${result4.id}`} className={s.item} onClick={()=>getFile(result4.id, setShow)}>
+                                  <div key={`result_${result5.id}`} className={s.item} onClick={()=>getFile(result5.id, setShow)}>
                                     <div className={s.text}>
                                       {name}
                                     </div>
                                   </div>
                                 )
+                                }
                               }
                             })
                           }
@@ -210,11 +223,35 @@ export async function getStaticProps() {
     })
     const sourceDirectoryList = await getSourceDirectoryList.json()
 
-   
+    // Gets all images in the /Resultate directory recursively, sorted by last modified
+    const getSourceImageList = await fetch("https://api.infomaniak.com/2/drive/608492/files/search?directory_id=15715&depth=unlimited&per_page=1000&types[]=image", {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${process.env.KDRIVE}`,
+            "Content-Type" : "application/json"
+        },
+
+    })
+    const sourceImageList = await getSourceImageList.json()
+
+    // Gets preview Image object for each image file
+    const images = await Promise.all(sourceImageList.data.map(async image =>{
+        let getImg = await fetch(`https://api.infomaniak.com/2/drive/608492/files/${image.id}/preview`, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${process.env.KDRIVE}`,
+                "Content-Type" : "application/json"
+            },
+        })
+        // Magic by https://stackoverflow.com/questions/72036447/createobjecturl-error-argument-must-be-an-instance-of-blob-received-an-instan
+        getImg = await getImg.arrayBuffer()
+        const img = Buffer.from(getImg).toString("base64")
+        return {id: image.id, parent: image.parent_id, string: img}
+    }))
 
     return { 
         props: {
-            sourceDirectoryList
+            sourceDirectoryList, images
         } , 
             revalidate: 2
     }
