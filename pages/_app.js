@@ -7,6 +7,7 @@ import { useMediaQuery } from '@react-hook/media-query'
 import { useState } from "react"
 import Spinner from "../components/Spinner"
 import CookieConsent from "react-cookie-consent";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 export default function App({ Component, pageProps }) {
 
@@ -15,6 +16,7 @@ export default function App({ Component, pageProps }) {
 
   return(
     <>
+    <GoogleAnalytics trackPageViews />
     {isMobile ?
         <Navbar_Mobile />
       :
