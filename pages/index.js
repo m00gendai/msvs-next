@@ -33,7 +33,7 @@ const router = useRouter()
         <section className={s.section}>
           <h2>Home</h2> 
           <div className={s.image}>
-          <Image src={Gruppenfoto} fill alt="Gruppenbild MSVS"/>   
+          <Image src={Gruppenfoto} fill alt="Gruppenbild MSVS" priority/>   
           </div>        
             <div className={s.container}>
               <Link href="/kantonalcup" className={s.button}>Kantonalcup</Link>
