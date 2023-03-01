@@ -64,7 +64,13 @@ export default function Pistole(
                                             if(result2.type == "dir" && result2.name == currentYear.toString() && result2.parent_id == result.id){
                                                 return results.map(result3 =>{
                                                     if(result3.type == "file" && result3.parent_id == result2.id){
-                                                        const name = result3.name.replaceAll("_", " ").replace(".pdf", "").replace(".doc", "")
+                                                        const name = result3.name
+                                                        .replaceAll("_", " ")
+                                                        .replace(".pdf", "")
+                                                        .replace(".xlsx", "")
+                                                        .replace(".xls", "")
+                                                        .replace(".docx", "")
+                                                        .replace(".doc", "")
                                                         return (
                                                             <div key={`einladung_${result3.id}`} className={s.item} onClick={()=>getFile(result3.id, setShow)}>
                                                                 <div className={s.text}>

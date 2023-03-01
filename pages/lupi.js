@@ -181,7 +181,13 @@ export default function Lupi(
                             results.map(result5 =>{
                               if(result5.type == "file" && result5.parent_id == result3.id){
                                 if(!result5.mime_type.startsWith("image")){
-                                const name = result5.name.replaceAll("_", " ").replace(".pdf", "")
+                                const name = result5.name
+                                .replaceAll("_", " ")
+                                .replace(".pdf", "")
+                                .replace(".xlsx", "")
+                                .replace(".xls", "")
+                                .replace(".docx", "")
+                                .replace(".doc", "")
                                 return(
                                   <div key={`result_${result5.id}`} className={s.item} onClick={()=>getFile(result5.id, setShow)}>
                                     <div className={s.text}>
