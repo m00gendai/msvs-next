@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import Header from "../components/header"
 import s from "../styles/Page.module.css"
 import getFile from "../functions/getFile"
+import extensionTrimmer from "../functions/extensionTrimmer"
 
 
 export default function Lupi(
@@ -109,11 +110,11 @@ export default function Lupi(
                                     if(result2.type == "dir" && result2.name == currentYear.toString() && result2.parent_id == result.id){
                                         return results.map(result3 =>{
                                             if(result3.type == "file" && result3.parent_id == result2.id){
-                                                const name = result3.name.replaceAll("_", " ").replace(".pdf", "").replace(".doc", "")
+                                                
                                                 return (
                                                     <div key={`einladung_${result3.id}`} className={s.item} onClick={()=>getFile(result3.id, setShow)}>
                                                         <div className={s.text}>
-                                                            {name}
+                                                            {extensionTrimmer(result3.name)}
                                                         </div>
                                                     </div>
                                                 )
@@ -139,11 +140,11 @@ export default function Lupi(
                     {
                       results.map(result2 =>{
                         if(result2.type == "file" && result2.parent_id == result.id){
-                          const name = result2.name.replaceAll("_", " ").replace(".pdf", "")
+           
                           return(
                             <div key={`result_${result2.id}`} className={s.item} onClick={()=>getFile(result2.id, setShow)}>
                               <div className={s.text}>
-                                {name}
+                                {extensionTrimmer(result2.name)}
                               </div>
                             </div>
                           )
@@ -181,17 +182,11 @@ export default function Lupi(
                             results.map(result5 =>{
                               if(result5.type == "file" && result5.parent_id == result3.id){
                                 if(!result5.mime_type.startsWith("image")){
-                                const name = result5.name
-                                .replaceAll("_", " ")
-                                .replace(".pdf", "")
-                                .replace(".xlsx", "")
-                                .replace(".xls", "")
-                                .replace(".docx", "")
-                                .replace(".doc", "")
+                                
                                 return(
                                   <div key={`result_${result5.id}`} className={s.item} onClick={()=>getFile(result5.id, setShow)}>
                                     <div className={s.text}>
-                                      {name}
+                                      {extensionTrimmer(result5.name)}
                                     </div>
                                   </div>
                                 )

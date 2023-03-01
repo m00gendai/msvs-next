@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import Header from "../components/header"
 import s from "../styles/Page.module.css"
 import getFile from "../functions/getFile"
+import extensionTrimmer from "../functions/extensionTrimmer"
 
 export default function Pistole(
     {
@@ -64,17 +65,11 @@ export default function Pistole(
                                             if(result2.type == "dir" && result2.name == currentYear.toString() && result2.parent_id == result.id){
                                                 return results.map(result3 =>{
                                                     if(result3.type == "file" && result3.parent_id == result2.id){
-                                                        const name = result3.name
-                                                        .replaceAll("_", " ")
-                                                        .replace(".pdf", "")
-                                                        .replace(".xlsx", "")
-                                                        .replace(".xls", "")
-                                                        .replace(".docx", "")
-                                                        .replace(".doc", "")
+                                                        
                                                         return (
                                                             <div key={`einladung_${result3.id}`} className={s.item} onClick={()=>getFile(result3.id, setShow)}>
                                                                 <div className={s.text}>
-                                                                    {name}
+                                                                    {extensionTrimmer(result3.name)}
                                                                 </div>
                                                             </div>
                                                         )
@@ -119,12 +114,12 @@ export default function Pistole(
                                             if(result2.type == "dir" && result2.name == currentYear.toString() && result2.parent_id == result.id){
                                                 return results.map(result3 =>{
                                                     if(result3.type == "file" && result3.parent_id == result2.id){
-                                                        const name = result3.name.replaceAll("_", " ").replace(".pdf", "")
+                                                       
                                                         if(!result3.mime_type.startsWith("image")){
                                                             return(
                                                                 <div key={`result_${result3.id}`} className={s.item} onClick={()=>getFile(result3.id, setShow)}>
                                                                     <div className={s.text}>
-                                                                        {name}
+                                                                        {extensionTrimmer(result3.name)}
                                                                     </div>
                                                                 </div>
                                                             )

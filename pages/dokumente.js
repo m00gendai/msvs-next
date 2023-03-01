@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import Header from "../components/header"
 import s from "../styles/Dokumente.module.css"
 import getFile from "../functions/getFile"
+import extensionTrimmer from "../functions/extensionTrimmer"
 
 
 export default function Dokumente({
@@ -41,17 +42,11 @@ export default function Dokumente({
                                     {
                                         results.map(item =>{
                                             if(item.type == "file" && item.parent_id == result.id){
-                                                const name = item.name
-                                                    .replaceAll("_", " ")
-                                                    .replace(".pdf", "")
-                                                    .replace(".docx", "")
-                                                    .replace(".doc", "")
-                                                    .replace(".xlsx", "")
-                                                    .replace(".xls", "")
+                                                
                                                 return (
                                                     <div key={`item_${item.id}`} className={s.item} onClick={()=>getFile(item.id, setShow)}>
                                                         <div className={s.text}>
-                                                            {name}
+                                                            {extensionTrimmer(item.name)}
                                                         </div>
                                                     </div>
                                                 )

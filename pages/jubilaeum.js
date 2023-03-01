@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import Header from "../components/header"
 import s from "../styles/Jubilaeum.module.css"
 import getFile from "../functions/getFile"
+import extensionTrimmer from "../functions/extensionTrimmer"
 
 
 export default function Jubiläum({
@@ -47,11 +48,11 @@ export default function Jubiläum({
                                     <div className={s.container} key={`einladungContainer_${item.id}`}>
                                       {sourceDirectoryList.data.map(item2 =>{
                       if(item2.parent_id == item.id){
-                        const name = item2.name.replaceAll("_", " ").replace(".pdf", "").replace(".doc", "")
+                       
                                                         return (
                                                             <div key={`einladung_${item2.id}`} className={s.item} onClick={()=>getFile(item2.id, setShow)}>
                                                                 <div className={s.text}>
-                                                                    {name}
+                                                                    {extensionTrimmer(item2.name)}
                                                                 </div>
                                                             </div>
                                                         )
