@@ -30,6 +30,18 @@
     padding: 1rem;
 }
 
+.imageContainer{
+    position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+}
+
+.imageContainer > * {
+    margin: 1rem;
+}
+
 .item{
     position: relative;
     display: flex;
