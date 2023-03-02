@@ -19,7 +19,7 @@ export default function Footer(){
                     </p>
                     <div className={s.linkContainer}>
                         <Link className={s.link} href="/impressum">Impressum</Link>
-                        <Link className={s.link} href="/datenschutzerklaerung">Datenschutz</Link>
+                        <Link className={s.link} href="/datenschutz">Datenschutz</Link>
                     </div>
                 </>
                 :
