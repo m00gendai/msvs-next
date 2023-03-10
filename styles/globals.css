@@ -57,6 +57,9 @@ h2{
   padding: 1rem 0 0.5rem 0.5rem;
   text-align: left;
   background: yellow;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 h3{
