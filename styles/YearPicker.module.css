@@ -1,0 +1,22 @@
+.wrapper{
+    position: relative;
+    margin: 0 0 0 0.5ch;
+    border: none;
+    border-bottom: 2px solid black;
+    box-sizing: border-box;
+}
+
+.wrapper select{
+    position: relative;
+    border: none;
+    background: transparent;
+    font-size: 1.375rem;
+    font-weight: bold;
+    padding: 0 1rem 0 1rem;
+    width: 100%;
+    
+}
+
+.wrapper select:hover{
+    cursor: pointer;
+}
