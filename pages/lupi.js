@@ -1,10 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from 'next/router'
+import { useState } from "react"
 import Header from "../components/header"
 import s from "../styles/Page.module.css"
 import getFile from "../functions/getFile"
 import extensionTrimmer from "../functions/extensionTrimmer"
+import YearPicker from "../components/YearPicker"
 
 
 export default function Lupi(
@@ -16,7 +18,7 @@ export default function Lupi(
 ){
 
   const date = new Date()
-  const currentYear = date.getFullYear()
+  const [currentYear, setCurrentYear] = useState(date.getFullYear())
 
   const router = useRouter()
   const headUrl = `https://msvs.ch${router.pathname}`
@@ -93,7 +95,7 @@ export default function Lupi(
     <Header title={"MSVS - Lupi"} content={"MSVS Lupi"} url={headUrl} />
     <main>
       <section className={s.section}>
-        <h2>Lupi</h2> 
+        <h2>{`Lupi`}<YearPicker currentYear={currentYear} setCurrentYear={setCurrentYear}/></h2>
         <h3>{`Einladungen ${currentYear}`}</h3>
         {
           einladungen.length == 0 ?

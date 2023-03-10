@@ -1,9 +1,11 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from 'next/router'
+import { useState } from "react"
 import Header from "../components/header"
 import s from "../styles/Page.module.css"
 import getFile from "../functions/getFile"
+import YearPicker from "../components/YearPicker"
 import extensionTrimmer from "../functions/extensionTrimmer"
 
 export default function Gewehr(
@@ -14,10 +16,8 @@ export default function Gewehr(
     }
     ){
 
- 
-
     const date = new Date()
-    const currentYear = date.getFullYear()
+    const [currentYear, setCurrentYear] = useState(date.getFullYear())
 
     const router = useRouter()
     const headUrl = `https://msvs.ch${router.pathname}`
@@ -49,7 +49,7 @@ export default function Gewehr(
         <Header title={"MSVS - Gewehr"} content={"MSVS Gewehr"} url={headUrl} />
         <main>
             <section className={s.section}>
-                <h2>Gewehr</h2> 
+                <h2>{`Gewehr`}<YearPicker currentYear={currentYear} setCurrentYear={setCurrentYear}/></h2>
                 <h3>{`Einladungen ${currentYear}`}</h3>
                 {
                     einladungen.length == 0 ?

@@ -1,10 +1,11 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from 'next/router'
+import { useState } from "react"
 import Header from "../components/header"
 import s from "../styles/KC.module.css"
 import getFile from "../functions/getFile"
-
+import YearPicker from "../components/YearPicker"
 
 export default function Kantonalcup(
     {
@@ -13,9 +14,8 @@ export default function Kantonalcup(
     }
     ){
 
-
     const date = new Date()
-    const currentYear = date.getFullYear()
+    const [currentYear, setCurrentYear] = useState(date.getFullYear())
 
     const router = useRouter()
     const headUrl = `https://msvs.ch${router.pathname}`
@@ -215,7 +215,7 @@ export default function Kantonalcup(
         <Header title={"MSVS - Kantonalcup Schaffhausen"} content={"Schaffhauser Kantonalcup"} url={headUrl} />
         <main>
             <section className={s.section}>
-                <h2>Kantonalcup</h2> 
+                <h2>{`Kantonalcup`}<YearPicker currentYear={currentYear} setCurrentYear={setCurrentYear}/></h2>
                 <h3>{`Dokumente ${currentYear}`}</h3>
                 {
                   getDocs() == 0 ?
