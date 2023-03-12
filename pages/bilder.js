@@ -14,6 +14,19 @@ export default function Bilder(
     images
   }
 ){
+  
+  const dirs = images.filter(dir=>{
+    return dir.type == "dir"
+  })
+
+  dirs.sort((a,b) => {
+    const first = a.name.split(" ")
+    const second = b.name.split(" ")
+    const x = first[first.length-1]
+    const y = second[second.length-1]
+
+    return x < y ? 1 : x > y ? -1 : 0
+  })
 
   const router = useRouter()
     const headUrl = `https://msvs.ch${router.pathname}`
@@ -58,7 +71,7 @@ export default function Bilder(
         <section className={s.section}>
           <h2>Bilder</h2> 
           {
-            images.map(item =>{
+            dirs.map(item =>{
               if(item.type == "dir"){
                 return(
                   <div className={s.container} onClick={(e)=>openSesame(e, item.id)} key={`container_${item.name}`}>
