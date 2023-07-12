@@ -24,6 +24,7 @@ export default function Impressum(){
                     </div>
                     <div className={s.containerItem}>
                         <strong className={s.strong}>Verantwortlicher Webseite</strong>
+                        <p>mrweber.ch</p>
                         <p>Marcel Weber</p>
                         <p>8215 Hallau</p>
                         <p>Schweiz</p>
