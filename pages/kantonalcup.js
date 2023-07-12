@@ -193,11 +193,11 @@ export default function Kantonalcup(
 
     function fileRenamer(name){
       // Assumes that the files are always (more or less) named the same across years. Fallback is original filename
-      if(name.includes("Kat-S")){
+      if(name.includes("Kat S")){
         return "Sportgewehr"
       } else if(name.includes("57-03")){
         return "Stgw 57/03"
-      } else if(name.includes("Uebr")){
+      } else if(name.includes("Übr")){
         return "Übrige"
       } else if(name.includes("U21")){
         return "Gewehr U21"
@@ -229,7 +229,13 @@ export default function Kantonalcup(
                         if(result2.type == "dir" && result2.name == "Dokumente" && result2.parent_id == result.id){                  
                           return results.map(result3 =>{
                             if(result3.type == "file" && result3.parent_id == result2.id){
-                              const name = result3.name.replaceAll("_", " ").replace(".pdf", "").replace(".doc", "")
+                              const name = result3.name
+                                .replaceAll("_", " ")
+                                .replace(".pdf", "")
+                                .replace(".docx", "")
+                                .replace(".doc", "")
+                                .replace(".xlsx", "")
+                                .replace(".xls", "")
                               return (
                                
                                     <div key={`einladung_${result3.id}`} className={s.item} onClick={()=>getFile(result3.id, setShow)}>
