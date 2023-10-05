@@ -35,15 +35,10 @@ export default function Bilder(
     const [lightImage, setLightImage] = useState(null)
     const [expand, setExpand] = useState(null)
 
-    function closeLight(e){
-      if(e.target.tagName == "svg"){
+    function closeLight(){
         setVisible(!isVisible)
         setLightImage(null)
-      } else if(e.target.className.includes("veil")){
-        setVisible(!isVisible)
-        setLightImage(null)
-      }
-    }
+      } 
 
     function openSesame(e, id){
       if(e.target.className.includes("container") || e.target.tagName == "H3"){
@@ -60,9 +55,15 @@ export default function Bilder(
      <Header title={"MSVS - Bilder"} content={"MSVS Bildergalerie"} url={headUrl} />
      {
       isVisible ?
-        <div className={s.veil} onClick={(e)=>closeLight(e)}>
-          <HightlightOffIcon className={s.close} onClick={(e)=>closeLight(e)} sx={{color: "white", fontSize: "2.5rem"}}/>
-          <img className={s.lightImage} src={`data:image;base64, ${lightImage.string}`} key={`imageItem_${lightImage.id}`} />
+        <div className={s.veil}>
+          <HightlightOffIcon className={s.close} onClick={()=>closeLight()} sx={{color: "white", fontSize: "2.5rem"}}/>
+          <div className={s.lightImage} key={`imageItem_${lightImage.id}`}>
+            <Image
+              src={`data:image;base64, ${lightImage.string}`}
+              alt={lightImage.name}
+              fill={true}
+              style={{objectFit: "contain"}} />
+          </div>
         </div>
       :
       null
@@ -84,10 +85,12 @@ export default function Bilder(
                           if(img.type == "file" && img.parent == item.id){
                             return(
                               <div className={s.thumb} key={`image_${img.id}`}
-                              style ={{
-                                backgroundImage: `url("data:image;base64, ${img.string}")`
-                              }}
-                              onClick={()=> {setVisible(!isVisible), setLightImage(img)}}>
+                                onClick={()=> {setVisible(!isVisible), setLightImage(img)}}>
+                                <Image 
+                                  src={`data:image;base64, ${img.string}`}
+                                  fill={true}
+                                  alt={img.name}
+                                  style={{objectFit: "cover"}} />
                               </div>
                             )
                           }
@@ -109,7 +112,7 @@ export default function Bilder(
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 
     // Gets all folders and files in the /Bilder directory recursively, sorted by last modified
     const getSourceDirectoryList = await fetch("https://api.infomaniak.com/2/drive/608492/files/search?directory_id=16007&depth=unlimited&per_page=1000", {
@@ -141,6 +144,5 @@ export async function getStaticProps() {
         props: {
             images
         } , 
-            revalidate: 2
     }
 }
