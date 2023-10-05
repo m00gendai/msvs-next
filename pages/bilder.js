@@ -4,10 +4,7 @@ import { useRouter } from 'next/router'
 import { useState } from "react"
 import Header from "../components/header"
 import s from "../styles/Gallery.module.css"
-import getFile from "../functions/getFile"
-import HightlightOffIcon from '@mui/icons-material/HighlightOff';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import { ArrowForwardIos, ArrowBackIosNew, HighlightOff } from "@mui/icons-material"
 
 export default function Bilder(
   {
@@ -32,12 +29,14 @@ export default function Bilder(
     const headUrl = `https://msvs.ch${router.pathname}`
 
     const [isVisible, setVisible] = useState(false)
-    const [lightImage, setLightImage] = useState(null)
+    const [lightImages, setLightImages] = useState(null)
     const [expand, setExpand] = useState(null)
+    const [lightIndex, setLightIndex] = useState(0)
+    const [itemId, setItemId] = useState(null)
 
     function closeLight(){
         setVisible(!isVisible)
-        setLightImage(null)
+        setLightImages(null)
       } 
 
     function openSesame(e, id){
@@ -50,20 +49,34 @@ export default function Bilder(
       }
     }
 
+    function forward(){
+      if(images[lightIndex+1].parent === itemId){
+        setLightIndex(lightIndex => lightIndex+1)
+      }
+    }
+
+    function backward(){
+      if(images[lightIndex-1].parent === itemId){
+        setLightIndex(lightIndex => lightIndex-1)
+      }
+    }
+
     return(
         <>
      <Header title={"MSVS - Bilder"} content={"MSVS Bildergalerie"} url={headUrl} />
      {
       isVisible ?
         <div className={s.veil}>
-          <HightlightOffIcon className={s.close} onClick={()=>closeLight()} sx={{color: "white", fontSize: "2.5rem"}}/>
-          <div className={s.lightImage} key={`imageItem_${lightImage.id}`}>
+          <ArrowBackIosNew onClick={()=>backward()} className={s.back} sx={{color: "white", fontSize: "4rem"}}/>
+          <HighlightOff className={s.close} onClick={()=>closeLight()} sx={{color: "white", fontSize: "2.5rem"}}/>
+          <div className={s.lightImage} key={`imageItem_${lightImages[lightIndex].id}`}>
             <Image
-              src={`data:image;base64, ${lightImage.string}`}
-              alt={lightImage.name}
+              src={`data:image;base64, ${lightImages[lightIndex].string}`}
+              alt={lightImages[lightIndex].name}
               fill={true}
               style={{objectFit: "contain"}} />
           </div>
+          <ArrowForwardIos onClick={()=>forward()} className={s.ffd} sx={{color: "white", fontSize: "4rem"}}/>
         </div>
       :
       null
@@ -81,16 +94,17 @@ export default function Bilder(
                       expand == item.id ?
                       <div className={s.inner}>
                       {
-                        images.map(img =>{
+                        images.map((img, index) =>{
                           if(img.type == "file" && img.parent == item.id){
                             return(
                               <div className={s.thumb} key={`image_${img.id}`}
-                                onClick={()=> {setVisible(!isVisible), setLightImage(img)}}>
+                                onClick={()=> {setVisible(!isVisible), setLightImages(images), setLightIndex(index), setItemId(item.id)}}>
                                 <Image 
                                   src={`data:image;base64, ${img.string}`}
                                   fill={true}
                                   alt={img.name}
-                                  style={{objectFit: "cover"}} />
+                                  style={{objectFit: "cover"}} 
+                                  blurDataURL={`data:image;base64, ${img.string}`}/>
                               </div>
                             )
                           }
