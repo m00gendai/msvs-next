@@ -10,7 +10,7 @@ import YearPicker from "../components/YearPicker"
 export default function Kantonalcup(
     {
       setShow,
-        sourceDirectoryList
+        sourceDirectoryList, images
     }
     ){
 
@@ -269,8 +269,19 @@ export default function Kantonalcup(
                             Object.keys(entry) == `Resultat Runde ${finalTree.length/2}` ? "Resultat Finale" :
                             Object.keys(entry)}
                           </h4>
+                          <div className={s.imageContainer}>
+                            {
+                                images.map(img =>{
+                                            if(Object.keys(entry)[0] === "Resultat Runde 4"){
+                                                return <Image src={`data:$;base64, ${img.string}`} key={`imageItem_${img.id}`} alt={img.name} fill={true} style={{objectFit: "contain"}}/>
+                                            }
+                                        })
+                                   
+                            }
+                          </div>
                           <div className={s.container} key={`treeContainer_${index}`}>
                             {Object.values(entry)[0].map(item =>{
+                              if(item.name.includes(".pdf")){
                               return (
                                 <div key={`einladung_${item.id}`} className={s.item} onClick={()=>getFile(item.id, setShow)}>
                                     <div className={s.text}>
@@ -278,6 +289,7 @@ export default function Kantonalcup(
                                     </div>
                                 </div>
                             )
+                              }
                             })}
                           </div>
                         </div>
@@ -293,7 +305,7 @@ export default function Kantonalcup(
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 
     // Gets all folders and files in the /Pistole directory recursively, sorted by last modified
     const getSourceDirectoryList = await fetch("https://api.infomaniak.com/2/drive/608492/files/search?directory_id=15647&depth=unlimited&per_page=1000", {
@@ -306,10 +318,35 @@ export async function getStaticProps() {
     })
     const sourceDirectoryList = await getSourceDirectoryList.json()
 
+    // Gets all images in the /Resultate directory recursively, sorted by last modified
+    const getSourceImageList = await fetch("https://api.infomaniak.com/2/drive/608492/files/search?directory_id=15647&depth=unlimited&per_page=1000&types[]=image", {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${process.env.KDRIVE}`,
+            "Content-Type" : "application/json"
+        },
+
+    })
+    const sourceImageList = await getSourceImageList.json()
+
+    // Gets preview Image object for each image file
+    const images = await Promise.all(sourceImageList.data.map(async image =>{
+        let getImg = await fetch(`https://api.infomaniak.com/2/drive/608492/files/${image.id}/preview`, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${process.env.KDRIVE}`,
+                "Content-Type" : "application/json"
+            },
+        })
+        // Magic by https://stackoverflow.com/questions/72036447/createobjecturl-error-argument-must-be-an-instance-of-blob-received-an-instan
+        getImg = await getImg.arrayBuffer()
+        const img = Buffer.from(getImg).toString("base64")
+        return {id: image.id, parent: image.parent_id, string: img}
+    }))
+
     return { 
         props: {
-            sourceDirectoryList
-        } , 
-            revalidate: 2
+            sourceDirectoryList, images
+        } 
     }
 }
