@@ -126,7 +126,7 @@ export default function Bilder(
     )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 
     // Gets all folders and files in the /Bilder directory recursively, sorted by last modified
     const getSourceDirectoryList = await fetch("https://api.infomaniak.com/2/drive/608492/files/search?directory_id=16007&depth=unlimited&per_page=1000", {
@@ -157,6 +157,6 @@ export async function getServerSideProps() {
     return { 
         props: {
             images
-        } , 
+        } , revalidate: 10
     }
 }
