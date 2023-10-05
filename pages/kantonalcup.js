@@ -269,16 +269,18 @@ export default function Kantonalcup(
                             Object.keys(entry) == `Resultat Runde ${finalTree.length/2}` ? "Resultat Finale" :
                             Object.keys(entry)}
                           </h4>
+                          {Object.keys(entry)[0] === "Resultat Runde 4" ? 
                           <div className={s.imageContainer}>
                             {
                                 images.map(img =>{
-                                            if(Object.keys(entry)[0] === "Resultat Runde 4"){
+                                            
                                                 return <Image src={`data:$;base64, ${img.string}`} key={`imageItem_${img.id}`} alt={img.name} fill={true} style={{objectFit: "contain"}}/>
-                                            }
+                                            
                                         })
                                    
                             }
-                          </div>
+                          </div> : null
+                          }
                           <div className={s.container} key={`treeContainer_${index}`}>
                             {Object.values(entry)[0].map(item =>{
                               if(item.name.includes(".pdf")){
@@ -305,7 +307,7 @@ export default function Kantonalcup(
     )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 
     // Gets all folders and files in the /Pistole directory recursively, sorted by last modified
     const getSourceDirectoryList = await fetch("https://api.infomaniak.com/2/drive/608492/files/search?directory_id=15647&depth=unlimited&per_page=1000", {
@@ -347,6 +349,6 @@ export async function getServerSideProps() {
     return { 
         props: {
             sourceDirectoryList, images
-        } 
+        } , revalidate: 10
     }
 }
