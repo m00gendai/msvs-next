@@ -44,3 +44,9 @@
     cursor:pointer;
     background:gold;
 }
+
+.imageContainer{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 21/5;
+}

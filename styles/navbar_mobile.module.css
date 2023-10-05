@@ -11,6 +11,12 @@
     flex-wrap: wrap;
 }
 
+@media only screen and (min-aspect-ratio: 13/9){
+    .nav{
+        display: none;
+    }
+}
+
 .homeLink{
     color: white;
 }
