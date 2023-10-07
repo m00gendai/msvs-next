@@ -58,7 +58,7 @@ export default function Navbar_Mobile(){
                     <Link className={s.link} onClick={(e)=>handleSubMenuTrigger(e)} href="/">Home</Link>
                     <Link className={s.link} onClick={(e)=>handleSubMenuTrigger(e)} href="/gewehr">Gewehr</Link>
                     <Link className={s.link} onClick={(e)=>handleSubMenuTrigger(e)} href="/pistole">Pistole</Link>
-                    <Link className={s.link} onClick={(e)=>handleSubMenuTrigger(e)} href="/lupi">Lupi</Link>
+                    <Link className={s.link} onClick={(e)=>handleSubMenuTrigger(e)} href="/luft">Luft</Link>
                     <Link className={s.link} onClick={(e)=>handleSubMenuTrigger(e)} href="/kantonalcup">Kantonalcup</Link>
                     <div className={s.link} >die MSVS</div>
                     <div className={s.subLinkContainer} >
