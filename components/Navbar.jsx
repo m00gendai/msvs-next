@@ -31,7 +31,7 @@ export default function Navbar(){
                 <Link className={s.homeLink} href="/"></Link>
                 <Link className={s.link} href="/gewehr">Gewehr</Link>
                 <Link className={s.link} href="/pistole">Pistole</Link>
-                <Link className={s.link} href="/lupi">Lupi</Link>
+                <Link className={s.link} href="/luft">Luft</Link>
                 <Link className={s.link} href="/kantonalcup">Kantonalcup</Link>
                 <div className={s.surLinkContainer} onMouseEnter={(e)=>handleSubMenuTrigger(e)} onMouseLeave={(e)=>handleSubMenuTrigger(e)}>
                     <div className={s.link} >Die MSVS</div>
