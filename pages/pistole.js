@@ -25,8 +25,10 @@ export default function Pistole(
         <main>
             <section className={s.section}>
                 <h2>{`Pistole`}</h2>
-                <h3>Einladungen</h3>
+                <h3>{`Einladungen`}</h3>
                 <div className={s.results}>
+                {
+                    getInvitationFiles.length !== 0 ? 
                     <div className={s.container}>
                         {
                             getInvitationFiles.map(invitations =>{
@@ -42,9 +44,17 @@ export default function Pistole(
                             })
                         }
                     </div>
+                    :
+                    <p>{`Noch keine Einladungen für ${currentYear}`}</p>
+                }
                 </div>
-                <h3>{`Resultate ${currentYear}`}</h3>
-                 {
+                <h3>{`Resultate`}</h3>
+                {
+                    resultCurrentYearDirectories.data.length === 0 ? 
+                    <div className={s.results}>
+                        <p>{`Noch keine Resultate von ${currentYear}`}</p>
+                    </div>
+                    :
                     resultCurrentYearDirectories.data.map(dir =>{
                         return (
                             <div className={s.results} key={`Resultate_${dir.id}`}>
