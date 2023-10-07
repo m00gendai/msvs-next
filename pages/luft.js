@@ -53,6 +53,11 @@ export default function Luft(
                 </div>
                 <h3>{`Wintermeisterschaft`}</h3>
                 {
+                    winterMastersSeasons.data.length === 0 ? 
+                    <div className={s.results}>
+                        <p>{`Keine Wintermeisterschaft?`}</p>
+                    </div>
+                    :
                     winterMastersSeasons.data.map(dir =>{
                         return (
                             <div className={s.results} key={`WM_${dir.id}`}>
@@ -78,10 +83,13 @@ export default function Luft(
                         )
                     })
                  }
-                
-
-                <h3>{`Resultate ${currentYear}`}</h3>
-                 {
+                <h3>{`Resultate`}</h3>
+                {
+                    resultCurrentYearDirectories.data.length === 0 ? 
+                        <div className={s.results}>
+                            <p>{`Noch keine Resultate von ${currentYear}`}</p>
+                        </div>
+                    :
                     resultCurrentYearDirectories.data.map(dir =>{
                         return (
                             <div className={s.results} key={`Resultate_${dir.id}`}>
