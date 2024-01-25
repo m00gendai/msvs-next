@@ -92,7 +92,7 @@ export async function getStaticProps() {
     const date = new Date()
     const currentYear = date.getFullYear()
 
-    const getResultsCurrentYearDirectories = await fetch(`https://api.infomaniak.com/2/drive/${process.env.KDRIVE_ROOT}/files/search?with=path&type=dir&query=${currentYear}&directory_id=${process.env.KDRIVE_GEW_RES}`, {
+    const getResultsCurrentYearDirectories = await fetch(`https://api.infomaniak.com/2/drive/${process.env.KDRIVE_ROOT}/files/search?with=path&type=dir&query="${currentYear}"&directory_id=${process.env.KDRIVE_GEW_RES}`, {
         method: "GET",
         headers: {
             Authorization: `Bearer ${process.env.KDRIVE}`,
@@ -113,7 +113,7 @@ export async function getStaticProps() {
         return await getDirectoryFiles.json()
     }))
 
-    const getInvitationCurrentYearDirectories = await fetch(`https://api.infomaniak.com/2/drive/${process.env.KDRIVE_ROOT}/files/search?with=path&type=dir&query=${currentYear}&directory_id=${process.env.KDRIVE_GEW_INV}`, {
+    const getInvitationCurrentYearDirectories = await fetch(`https://api.infomaniak.com/2/drive/${process.env.KDRIVE_ROOT}/files/search?with=path&type=dir&query="${currentYear}"&directory_id=${process.env.KDRIVE_GEW_INV}`, {
         method: "GET",
         headers: {
             Authorization: `Bearer ${process.env.KDRIVE}`,
