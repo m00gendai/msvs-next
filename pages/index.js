@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useRouter } from 'next/router'
 import s from '../styles/Home.module.css'
 import Gruppenfoto from "../public/Gruppenfoto.jpg"
+import Jubi from "../public/Jubi2.png"
 import Logo from "../public/logo.gif"
 import News from "../components/News"
 import { useMediaQuery } from '@react-hook/media-query'
@@ -32,9 +33,9 @@ const router = useRouter()
         <main>
         <section className={s.section}>
           <h2>Home</h2> 
-          <div className={s.image}>
-          <Image src={Gruppenfoto} fill alt="Gruppenbild MSVS" priority/>   
-          </div>        
+          <Link className={s.image} href="/jubilaeum">
+          <Image src={Jubi} fill={true} style={{objectFit: "contain"}} alt="Gruppenbild MSVS" priority/>   
+          </Link>        
             <div className={s.container}>
               <Link href="/kantonalcup" className={s.button}>Kantonalcup</Link>
               <div className={s.button} onClick={()=>getFile(thatFile.data[0].id, setShow)}>Mitglied werden</div>
