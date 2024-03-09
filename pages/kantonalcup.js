@@ -215,7 +215,7 @@ export default function Kantonalcup(
         <Header title={"MSVS - Kantonalcup Schaffhausen"} content={"Schaffhauser Kantonalcup"} url={headUrl} />
         <main>
             <section className={s.section}>
-                <h2>{`Kantonalcup`}<YearPicker currentYear={currentYear} setCurrentYear={setCurrentYear}/></h2>
+                <h2>{`Kantonalcup`}</h2>
                 <h3>{`Dokumente ${currentYear}`}</h3>
                 {
                   getDocs() == 0 ?
