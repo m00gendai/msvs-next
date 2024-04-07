@@ -139,11 +139,6 @@ export default function Kantonalcup(
       return {[`Kombination ${combo.name == "Finale" ? `Runde ${comboDirs.length}` : combo.name}`]: files}
     })
 
-    // If there are no combo files, return
-    if(Object.values(combos[combos.length-1])[0].length == 0){
-      return 0
-    }
-
     //Now the whole shebang again, but with "Resultate"
     const resultDir = results.filter(result =>{
       if(result.type == "dir" && result.name == "Resultate" && result.parent_id == currentYearDir[0].id){
@@ -168,7 +163,7 @@ export default function Kantonalcup(
 
     // After that, both "Kombinationen" and "Resultate" arrays are combined
     const kcArray = [...combos, ...resultate]
-
+console.log(kcArray)
     // Then the entries are sorted ascending based on the number of the object key (Kombinationen Runde 1 => 1 and so on). 
     // Meaning the order is Kombinationen Runde 1, Resultate RUnde 1, Kombinationen Runde 2, ...
    const chrono = kcArray.sort((a,b) =>{
