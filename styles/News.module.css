@@ -26,10 +26,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
 }
 
 .item p{
     width: 90%;
+    color: black;
 }
 
 .item:nth-child(even){
