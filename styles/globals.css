@@ -8,19 +8,11 @@ body{
   bottom: 0;
   right: 0;
   display: flex;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-#__next{
-  position: relative;
-  display: flex;
   justify-content: center;
   align-content: flex-start;
-  background: rgba(0, 0, 0, 1);
   flex-wrap: wrap;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  background: rgba(0, 0, 0, 1);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 main {
@@ -108,4 +100,16 @@ h4 {
   margin: 0 0 2rem 0;
   padding: 1rem 0 1rem 0;
   background: #f5f5f5
+}
+
+@media screen and (max-aspect-ratio: 13/9){
+  .desktop{
+    display: none;
+  }
+}
+
+@media screen and (min-aspect-ratio: 13/9){
+  .mobile{
+    display: none;
+  }
 }
