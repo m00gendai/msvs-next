@@ -1,4 +1,9 @@
 import React from "react"
+import Navbar from "../components/Navbar"
+import Navbar_Mobile from "../components/Navbar_mobile"
+import Footer from "../components/Footer"
+import "../styles/globals.css"
+
 
 export default function RootLayout({
 
@@ -8,7 +13,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de">
-      <body>{children}</body>
+      <body>
+      <Navbar_Mobile />
+        <Navbar />
+        {children}
+        <Footer />
+        </body>
+   
     </html>
   )
 }
