@@ -1,13 +1,16 @@
+"use client" 
+
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import s from "../styles/Navbar.module.css"
+import React from "react"
 
 export default function Navbar(){
 
-    const [overTrigger, setOverTrigger] = useState(false) // checks if cursor is over trigger link
-    const [visible, setVisible] = useState(false) // checks if submenu is visible
+    const [overTrigger, setOverTrigger] = useState<boolean>(false) // checks if cursor is over trigger link
+    const [visible, setVisible] = useState<boolean>(false) // checks if submenu is visible
 
-    function handleSubMenuTrigger(e){
+    function handleSubMenuTrigger(e:React.MouseEvent){
         if(e.type == "mouseenter"){
             setOverTrigger(true)
         } else if(e.type == "mouseleave"){
@@ -33,7 +36,7 @@ export default function Navbar(){
                 <Link className={s.link} href="/pistole">Pistole</Link>
                 <Link className={s.link} href="/luft">Luft</Link>
                 <Link className={s.link} href="/kantonalcup">Kantonalcup</Link>
-                <div className={s.surLinkContainer} onMouseEnter={(e)=>handleSubMenuTrigger(e)} onMouseLeave={(e)=>handleSubMenuTrigger(e)}>
+                <div className={s.surLinkContainer} onMouseEnter={(e:React.MouseEvent)=>handleSubMenuTrigger(e)} onMouseLeave={(e:React.MouseEvent)=>handleSubMenuTrigger(e)}>
                     <div className={s.link} >Die MSVS</div>
                     {visible?
                     <div className={s.subLinkContainer} >
