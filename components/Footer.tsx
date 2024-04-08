@@ -1,19 +1,17 @@
 import Link from "next/link"
 import s from "../styles/Footer.module.css"
 import { useMediaQuery } from '@react-hook/media-query'
+import React from "react"
 
 export default function Footer(){
 
-    const isMobile = useMediaQuery('only screen and (orientation: portrait)')
     const date = new Date()
     const currentYear = date.getFullYear()
 
     return(
-        <footer className={s.footer}>
-            {
-                isMobile
-                ?
-                <>
+        <>
+        <footer className={`${s.footer} mobile`}>
+
                     <p>
                         ©{currentYear.toString() == "2023" ? "2023" : `2023 - ${currentYear}`} Matchschützenvereinigung Schaffhausen
                     </p>
@@ -21,17 +19,15 @@ export default function Footer(){
                         <Link className={s.link} href="/impressum">Impressum</Link>
                         <Link className={s.link} href="/datenschutz">Datenschutz</Link>
                     </div>
-                </>
-                :
-                <>
+                </footer>
+                
+                <footer className={`${s.footer} desktop`}>
                     <Link className={s.link} href="/impressum">Impressum</Link>
                     <p>
                         ©{currentYear.toString() == "2023" ? "2023" : `2023 - ${currentYear}`} Matchschützenvereinigung Schaffhausen
                     </p>
                     <Link className={s.link} href="/datenschutz">Datenschutz</Link>
-                </>
-            }
-            
-        </footer>
+                </footer>
+</>
     )
 }
