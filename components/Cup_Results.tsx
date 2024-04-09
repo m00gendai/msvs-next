@@ -1,6 +1,7 @@
 import revalidate from "../app/actions/revalidate"
 import { FileResponse, File } from "../interfaces"
 import Cup_Result_Container from "./Cup_Result_Container"
+import s from "../styles/Page.module.css"
 
 async function getDirectory(currentYear:number, drive:string | undefined){
     const date:Date = new Date()
@@ -86,6 +87,16 @@ function sortRoundNames(names:Set<string>, rounds:number){
 export default async function Cup_Results({drive, currentYear}:Props){
     revalidate("CupFiles")
     const directory:FileResponse = await getDirectory(currentYear, drive)
+    if(directory.data.length === 0){
+        return (
+            <>
+            <h3>{`Kombinationen & Resultate ${currentYear}`}</h3>
+            <div className={s.results}>
+                <p>{`Noch keine Kombinationen für ${currentYear}`}</p>
+            </div>
+            </>
+        )
+    }
     const files:FileResponse = await getFiles(directory.data[0].id)
 
     const tierList:File[] = assemble(files)
@@ -104,6 +115,7 @@ export default async function Cup_Results({drive, currentYear}:Props){
 
     return(
         <>
+        <h3>{`Kombinaionen & Resultate ${currentYear}`}</h3>
         {
             sortedRoundNames.map(round=>{
                 return <Cup_Result_Container key={round} name={round} files={sortedTiers} />
