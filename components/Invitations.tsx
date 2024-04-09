@@ -44,7 +44,7 @@ export default async function Invitaitons({drive, currentYear}:Props){
             <div className={s.results}>
             {
                 files !== null ? 
-                    <div className={s.container}>
+                    <div className={s.fileContainer}>
                         {
                             files.data.map(file =>{
                                 return(
