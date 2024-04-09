@@ -36,14 +36,14 @@ interface Props{
 export default async function Invitaitons({drive, currentYear}:Props){
 
     const directory:FileResponse = await getDirectory(currentYear, drive)
-    const files:FileResponse = await getFiles(directory.data[0].id)
+    const files:FileResponse | null = directory.data.length === 0 ? null : await getFiles(directory.data[0].id)
 
     return(
         <>
         <h3>{`Einladungen`}</h3>
             <div className={s.results}>
             {
-                files.data.length !== 0 ? 
+                files !== null ? 
                     <div className={s.container}>
                         {
                             files.data.map(file =>{
