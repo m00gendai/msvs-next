@@ -31,4 +31,5 @@ export interface File{
   mime_type: string
   extension_type: string
   scan_status: string  
+  path: string
 }
