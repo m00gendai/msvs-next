@@ -25,8 +25,7 @@ export default async function News(){
         <div className={s.inner}>
         {items.data.map(item =>{
                 return(
-                    /*@ts-expect-error*/
-                   <News_Button item={item} />
+                   <News_Button key={`news_${item.id}`} item={item} />
                 )
             })}
         </div>
