@@ -57,7 +57,6 @@ export default async function Home() {
             </div>
         </section>
         <section className={s.news}>
-            {/*@ts-expect-error*/}
             <News />
         </section>
         </main>
