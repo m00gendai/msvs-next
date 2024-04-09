@@ -1,3 +1,4 @@
+import revalidate from "../app/actions/revalidate"
 import { FileResponse } from "../interfaces"
 import s from "../styles/Page.module.css"
 import Result_Container from "./Result_Container"
@@ -9,6 +10,9 @@ async function getDirectory(currentYear:number, drive:string | undefined){
             Authorization: `Bearer ${process.env.KDRIVE}`,
             "Content-Type" : "application/json"
         },
+        next: {
+            tags: ["ResultDirs"]
+          }
     })
 
     const directory:FileResponse = await getDirectory.json()
@@ -22,6 +26,7 @@ interface Props{
 
 export default async function Results({drive, currentYear}:Props){
 
+    revalidate("ResultDirs")
     const directory:FileResponse = await getDirectory(currentYear, drive)
     
     return(
