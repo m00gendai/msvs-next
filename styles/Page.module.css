@@ -50,6 +50,8 @@
     text-align: center;
     background: yellow;
     padding: 0.5rem;
+    text-decoration: none;
+    color: black;
 }
 
 .item:hover{
