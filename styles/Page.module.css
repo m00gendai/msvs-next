@@ -54,6 +54,12 @@
     aspect-ratio: 21/10;
 }
 
+.imageItemCup{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 42/10;
+}
+
 .item{
     position: relative;
     display: flex;
