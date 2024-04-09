@@ -1,6 +1,8 @@
-import { File, FileResponse } from "../interfaces"
+import revalidate from "../app/actions/revalidate"
+import { File, FileResponse, GetFileResponse } from "../interfaces"
 import s from "../styles/Page.module.css"
 import Result_Button from "./Result_Button"
+import Result_Image from "./Result_Image"
 
 async function getFiles(id:number){
     const getFiles:Response = await fetch(`https://api.infomaniak.com/2/drive/${process.env.KDRIVE_ROOT}/files/${id}/files`,{
@@ -9,6 +11,9 @@ async function getFiles(id:number){
                 Authorization: `Bearer ${process.env.KDRIVE}`,
                 "Content-Type" : "application/json"
             },
+            next: {
+                tags: ["ResultFiles"]
+              }
         })
     
         const files:FileResponse = await getFiles.json()
@@ -22,22 +27,35 @@ interface Props{
 
 export default async function Result_Container({directory, name}:Props){
 
+    revalidate("ResultFiles")
     const files:FileResponse = await getFiles(directory.id)
 
     return(
         <div className={s.results}>
             <h4>{name}</h4>
             <div className={s.container}>
-            {
-                files.data.map(file =>{
-                    if(file.parent_id == directory.id){
-                        return(
-                            <Result_Button key={`result_${file.id}`} item={file}/>
-                        )
+                <div className={s.imageContainer}>
+                {
+                    files.data.map(file =>{
+                        if(file.parent_id == directory.id && file.extension_type === "image"){
+                            return <Result_Image key={`image_${file.id}`} file={file}/>
+                        }
+                        
+                    })
+                }
+                </div>
+                <div className={s.fileContainer}>
+                    {
+                        files.data.map(file =>{
+                            if(file.parent_id == directory.id && file.extension_type !== "image"){
+                                return(
+                                    <Result_Button key={`result_${file.id}`} item={file}/>
+                                )
+                            }
+                            
+                        })
                     }
-                    
-                })
-            }
+                </div>
             </div>
         </div>
     )
