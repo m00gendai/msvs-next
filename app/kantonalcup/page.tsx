@@ -6,7 +6,7 @@ import Cup_Results from "../../components/Cup_Results"
 export default async function Page(){
 
     const date:Date = new Date()
-    const currentYear:number = date.getFullYear()-1
+    const currentYear:number = date.getFullYear()
 
     return(
         <main>
