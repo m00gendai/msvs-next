@@ -106,7 +106,7 @@ export default async function Cup_Results({drive, currentYear}:Props){
         <>
         {
             sortedRoundNames.map(round=>{
-                return <Cup_Result_Container name={round} files={sortedTiers} />
+                return <Cup_Result_Container key={round} name={round} files={sortedTiers} />
             })
         }
         </>
