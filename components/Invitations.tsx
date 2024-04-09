@@ -3,7 +3,10 @@ import s from "../styles/Page.module.css"
 import Invitation_Button from "./Invitation_Button"
 
 async function getDirectory(currentYear:number, drive:string | undefined){
-    const getDirectory:Response = await fetch(`https://api.infomaniak.com/2/drive/${process.env.KDRIVE_ROOT}/files/search?with=path&types[]=dir&query="${currentYear}"&directory_id=${drive}`, {
+    const date:Date = new Date()
+    const month:number = date.getMonth()+1
+
+    const getDirectory:Response = await fetch(`https://api.infomaniak.com/2/drive/${process.env.KDRIVE_ROOT}/files/search?with=path&types[]=dir&query=${drive === process.env.KDRIVE_AIR_INV && month < 6 ? `"${currentYear}" | "${currentYear-1}"` : `"${currentYear}"`}&directory_id=${drive}`, {
         method: "GET",
         headers: {
             Authorization: `Bearer ${process.env.KDRIVE}`,
