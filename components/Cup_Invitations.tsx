@@ -13,7 +13,9 @@ async function getDirectory(currentYear:number, drive:string | undefined){
             Authorization: `Bearer ${process.env.KDRIVE}`,
             "Content-Type" : "application/json"
         },
-        
+        next: {
+            tags: ["CupDocs"]
+        }
     })
 
     const directory:FileResponse = await getDirectory.json()
@@ -30,7 +32,9 @@ async function getDirectoryInvitation(id:number){
             Authorization: `Bearer ${process.env.KDRIVE}`,
             "Content-Type" : "application/json"
         },
-        
+        next: {
+            tags: ["CupDocs"]
+        }
     })
 
     const directory:FileResponse = await getDirectory.json()
@@ -46,9 +50,8 @@ async function getFiles(id:number){
         },
         next: {
             tags: ["CupDocs"]
-          }
         }
-    )
+    })
 
     const files = await getFiles.json()
     return files
