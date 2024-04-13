@@ -30,7 +30,7 @@ export default async function Image_Container(){
         <>
             {folders.map(folder=>{
                 return (
-                    <Suspense fallback={
+                    <Suspense key={`suspense_${folder.id}`} fallback={
                         <details className={`${s.details} ${s.disabled}`}>
                             <summary className={s.summary}>
                                 <h2 className={s.title}>

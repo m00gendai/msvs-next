@@ -37,7 +37,7 @@ export default async function Image_Folder({id, name}:Props){
                 {
                     images.data.map(image=>{
                         if(image.parent_id === id){
-                            return <Image_Image id={image.id} />
+                            return <Image_Image key={`image_${image.id}`} id={image.id} />
                         }
                     })
                 }
