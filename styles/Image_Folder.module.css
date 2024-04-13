@@ -1,0 +1,56 @@
+.details{
+    position: relative;
+    width: 100%;
+    margin: 1rem;
+    background: #f5f5f5;
+    box-shadow: 0px 0px 1px 0px black;
+}
+
+.summary{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.title{
+    padding: 1rem;
+    font-size: 1.5rem;
+    background: #f5f5f5;
+}
+
+.container{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner{
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.image{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+.disabled{
+    pointer-events: none;
+}
+
+.details:hover{
+    cursor: pointer;
+}
+
+.disabled:hover{
+    cursor: wait;
+}
