@@ -13,9 +13,6 @@ async function getDirectory(currentYear:number, drive:string | undefined){
             Authorization: `Bearer ${process.env.KDRIVE}`,
             "Content-Type" : "application/json"
         },
-        next: {
-            tags: ["CupDocs"]
-        }
     })
 
     const directory:FileResponse = await getDirectory.json()
@@ -32,9 +29,6 @@ async function getDirectoryInvitation(id:number){
             Authorization: `Bearer ${process.env.KDRIVE}`,
             "Content-Type" : "application/json"
         },
-        next: {
-            tags: ["CupDocs"]
-        }
     })
 
     const directory:FileResponse = await getDirectory.json()
@@ -48,9 +42,6 @@ async function getFiles(id:number){
             Authorization: `Bearer ${process.env.KDRIVE}`,
             "Content-Type" : "application/json"
         },
-        next: {
-            tags: ["CupDocs"]
-        }
     })
 
     const files = await getFiles.json()
@@ -63,18 +54,8 @@ interface Props{
 }
 
 export default async function Cup_Invitations({drive, currentYear}:Props){
-    revalidate("CupDocs")
+
     const directory:FileResponse = await getDirectory(currentYear, drive)
-    if(directory.data.length === 0){
-        return (
-            <>
-            <h3>{`Dokumente ${currentYear}`}</h3>
-            <div className={s.results}>
-                <p>{`Noch keine Einladung für ${currentYear}`}</p>
-            </div>
-            </>
-        )
-    }
     const directoryInvitation:FileResponse = await getDirectoryInvitation(directory.data[0].id)
     const files:FileResponse | null = directoryInvitation.data.length === 0 ? null : await getFiles(directoryInvitation.data[0].id)
 
