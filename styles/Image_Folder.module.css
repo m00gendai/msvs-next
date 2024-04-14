@@ -1,9 +1,8 @@
 .details{
     position: relative;
-    width: 100%;
-    margin: 1rem;
-    background: #f5f5f5;
-    box-shadow: 0px 0px 1px 0px black;
+    width: 95%;
+    background: var(--containerBackground);
+    box-shadow: var(--containerBoxShadow);
 }
 
 .summary{
@@ -16,7 +15,7 @@
 
 .title{
     padding: 1rem;
-    font-size: 1.5rem;
+    font-size: 1rem;
     background: #f5f5f5;
 }
 
