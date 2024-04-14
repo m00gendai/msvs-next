@@ -19,13 +19,21 @@ export default async function Result_Container({name, files}:Props){
                 {
                     files.map(file =>{
                         // ["", "MSVS", "Dokumente", {type}, {document}]
+                        // ["", "MSVS", "Jubiläum", {chapter}, {document}]
                         const path:string[] = file.path.split("/")
-                        if(`${path[2]} ${path[3]}` === name){
-                            return(
-                                <Cup_Result_Button key={`result_${file.id}`} item={file}/>
-                            )
+
+                        if(path[2] === "Dokmente"){
+                            if(`${path[2]} ${path[3]}` === name){
+                                return(
+                                    <Cup_Result_Button key={`result_${file.id}`} item={file}/>
+                                )
+                            }
                         }
-                        
+                        if(path[2] === "Jubiläum"){
+                            if(path[3] === name){
+                                return <Cup_Result_Button key={`result_${file.id}`} item={file}/>
+                            }
+                        }
                     })
                 }
                 </div>
