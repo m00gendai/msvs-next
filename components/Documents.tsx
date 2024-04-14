@@ -25,7 +25,7 @@ export default async function Results(){
     
     return(
         <>
-        <h3>{`Dokumente`}</h3>
+        <h3>&nbsp;</h3>
         {
             directory.data.map(dir =>{
                 return (

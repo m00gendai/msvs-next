@@ -31,6 +31,8 @@ export default async function Image_Container(){
             {folders.map(folder=>{
                 return (
                     <Suspense key={`suspense_${folder.id}`} fallback={
+                        <>
+                        <h4>&nbsp;</h4>
                         <details className={`${s.details} ${s.disabled}`}>
                             <summary className={s.summary}>
                                 <h2 className={s.title}>
@@ -42,6 +44,7 @@ export default async function Image_Container(){
                                 </div>
                             </div>
                         </details>
+                        </>
                     }>
                         <Image_Folder key={folder.id} id={folder.id} name={folder.name}/>
                     </Suspense>

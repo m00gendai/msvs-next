@@ -26,6 +26,8 @@ export default async function Image_Folder({id, name}:Props){
     const images:FileResponse = await getImages(id)
 
     return(
+        <>
+        <h4>&nbsp;</h4>
         <details className={s.details}>
             <summary className={s.summary}>
                 <h2 className={s.title}>
@@ -44,5 +46,6 @@ export default async function Image_Folder({id, name}:Props){
                 </div>
             </div>
         </details>
+        </>
     )
 }
