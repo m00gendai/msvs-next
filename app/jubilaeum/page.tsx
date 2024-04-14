@@ -1,3 +1,4 @@
+import React from "react"
 import Cup_Result_Button from "../../components/Cup_Result_Button"
 import Document_Container from "../../components/Document_Container"
 import { CMS_Page, FileResponse } from "../../interfaces"
@@ -54,19 +55,19 @@ export default async function Page(){
             <section className={s.section}>
                 <h2>{`50 Jahre Matchschützenvereinigung Schaffhausen`}</h2>
                 {
-                    content[0].content.chapter.map(item=>{
+                    content[0].content.chapter.map((item, index)=>{
                         return (
-                            <>
+                            <React.Fragment key={`item_${index}`}>
                             <h3>{item.title}</h3>
                             {item.text ? <div className="textContent" dangerouslySetInnerHTML={{__html: item.text}}></div> : null}
                             {directories.data ? directories.data.map(async directory=>{
                                 if(directory.name === item.title){
                                     const files:FileResponse = await getFiles(directory.id)
                                     console.log(files)
-                                    return <Document_Container name={item.title} files={files.data}/>
+                                    return <Document_Container key={directory.id} name={item.title} files={files.data}/>
                                 }
                             }) : null}
-                            </>
+                            </React.Fragment>
                         )
                     })
                 }
