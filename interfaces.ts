@@ -33,3 +33,38 @@ export interface File{
   scan_status: string  
   path: string
 }
+
+export interface CMS_Page{
+  title: string
+  content: CMS_Page_Content
+  _modified: number
+  _mby: string
+  _created: number
+  _state: number
+  _cby: string
+  _id: string
+}
+
+export interface CMS_Page_Content{
+  chapter: CMS_Page_Content_Chapter[]
+}
+
+export interface CMS_Page_Content_Chapter{
+  title: string
+  text: string
+}
+
+export interface Board{
+  position: string
+  name: string
+  address: string
+  landline: string
+  mobile: string
+  mail: string
+  _modified: number
+  _mby: string
+  _created: number
+  _state: number
+  _cby: string
+  _id: string
+}
