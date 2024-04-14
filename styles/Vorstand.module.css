@@ -1,90 +1,71 @@
-.section {
-    width: 90%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-content: flex-start;
-    flex-wrap: wrap;
-    background: white;
-    position: relative;
-}
-
 .container {
   position: relative;
-  width: 100%;
+  width: 95%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 1rem;
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  column-gap: 2rem;
+  row-gap: 4rem;
 }
 
 .item{
   position: relative;
-  background: #f5f5f5;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: flex-start;
-  padding: 1rem;
-  box-shadow: 0px 0px 1px 0px black;
-}
-
-.item h3{
-  position: relative;
-  width: 100%;
-  text-align: center;
-  margin: 0;
-  padding: 0.5rem;
-  background: black;
-  color: yellow;
-}
-
-.item h4 {
-  position: relative;
-  width: 100%;
-  text-align: center;
-  margin: 0.5rem 0 0 0;
-  padding: 0;
-}
-
-.doxx{
-  position: relative;
+  background: var(--containerBackground);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
+  box-shadow: var(--containerBoxShadow);
+  padding: 0;
+  border-radius: 0;
 }
 
-.infoAds {
-  margin: 1rem 0 1rem 0;
-  padding: 0;
+.header{
+
   position: relative;
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
 }
 
-.infoAds p{
+.title{
   position: relative;
   width: 100%;
-  margin: 0;
-  padding: 0;
+  font-size: 1.25rem;
+  color: black;
+  font-weight: bolder;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid black;
+}
+
+.name{
+  position: relative;
+  width: 100%;
+  font-size: 1rem;
+  color: black;
+  padding: 0.5rem 0;
 }
 
 .info{
-  margin: 0 0 1rem 0;
-  padding: 0;
   position: relative;
   width: 100%;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: center;
+  padding: 1rem;
 }
 
-.info p{
-  margin: 0 0 0 1rem;
-  padding: 0;
+.address{
+  position: relative;
+  width: 100%;
+}
+
+.contact{
+  position: relative;
+  width: 100%;
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  gap: 1rem;
 }
