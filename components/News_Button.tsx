@@ -2,6 +2,7 @@ import Link from "next/link";
 import extensionTrimmer from "../functions/extensionTrimmer";
 import { File, GetFileResponse } from "../interfaces";
 import s from "../styles/News.module.css"
+import { getNewsType } from "../functions/getNewsType";
 
 interface Props{
     item: File
@@ -26,10 +27,12 @@ async function getFile(id:number){
 export default async function NewsButton({item}:Props){
 
     const path:string = await getFile(item.id)
+    const itemType:{type:JSX.Element, document:JSX.Element} = getNewsType(item.path)
 
     return(
         <Link className={s.item} href={path} target="_blank">
-            <p>{extensionTrimmer(item.name)}</p>
+            <div className={s.icons}>{itemType.type} {itemType.document}</div>
+            <div className={s.title}>{extensionTrimmer(item.name)}</div>
         </Link>
     )
 }
