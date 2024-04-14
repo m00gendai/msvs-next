@@ -16,9 +16,9 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 0px 1px 0px black;
+    box-shadow: var(--containerBoxShadow);
     margin: 0 0 2rem 0;
-    background: #f5f5f5
+    background: var(--containerBackground);
 }
 
 .container{
@@ -66,7 +66,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: yellow;
+    background: var(--buttonColor);
     padding: 0.5rem;
     text-decoration: none;
     color: black;
@@ -74,7 +74,7 @@
 
 .item:hover{
     cursor:pointer;
-    background:gold;
+    background:var(--buttonColorHover);
 }
 
 .image{
