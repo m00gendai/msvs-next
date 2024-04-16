@@ -27,12 +27,12 @@ export default async function Image_Container(){
     })
 
     return(
-        <>
-            {folders.map(folder=>{
+        <div className={s.imageContainer}>
+            {folders.map((folder, index)=>{
                 return (
                     <Suspense key={`suspense_${folder.id}`} fallback={
                         <>
-                        <h4>&nbsp;</h4>
+                        {index === 0 ? <h4>&nbsp;</h4> : null}
                         <details className={`${s.details} ${s.disabled}`}>
                             <summary className={s.summary}>
                                 <h2 className={s.title}>
@@ -46,10 +46,10 @@ export default async function Image_Container(){
                         </details>
                         </>
                     }>
-                        <Image_Folder key={folder.id} id={folder.id} name={folder.name}/>
+                        <Image_Folder key={folder.id} id={folder.id} name={folder.name} index={index}/>
                     </Suspense>
                 )
             })}
-        </>
+        </div>
     )
 }

@@ -19,15 +19,16 @@ async function getImages(id:number){
 interface Props{
     id: number
     name: string
+    index: number
 }
 
-export default async function Image_Folder({id, name}:Props){
+export default async function Image_Folder({id, name, index}:Props){
 
     const images:FileResponse = await getImages(id)
 
     return(
         <>
-        <h4>&nbsp;</h4>
+        {index === 0 ? <h4>&nbsp;</h4> : null}
         <details className={s.details}>
             <summary className={s.summary}>
                 <h2 className={s.title}>

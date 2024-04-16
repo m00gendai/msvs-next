@@ -1,6 +1,14 @@
-.details{
+.imageContainer{
     position: relative;
     width: 95%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.details{
+    position: relative;
+    width: 100%;
     background: var(--containerBackground);
     box-shadow: var(--containerBoxShadow);
 }
@@ -34,6 +42,12 @@
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 1rem;
     padding: 1rem;
+}
+
+@media only screen and (max-aspect-ratio: 13/9){
+    .inner{
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .image{
