@@ -28,7 +28,7 @@ export default async function Result_Button({item}:Props){
     const path:string = await getFile(item.id)
 
     return(
-        <Link className={s.item} href={path} target="_blank">
+        <Link className={`${s.item} ${s.resultButton}`} href={path} target="_blank">
             <p>{extensionTrimmer(item.name)}</p>
         </Link>
     )
