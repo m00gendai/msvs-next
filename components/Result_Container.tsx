@@ -29,11 +29,12 @@ export default async function Result_Container({directory, name}:Props){
 
     revalidate("ResultFiles")
     const files:FileResponse = await getFiles(directory.id)
-
+    const imageCount:File[] = files.data.filter(file => file.extension_type === "image")
     return(
         <div className={s.results}>
             <h4>{name}</h4>
             <div className={s.container}>
+                {imageCount.length !== 0 ? 
                 <div className={s.imageContainer}>
                 {
                     files.data.map(file =>{
@@ -44,7 +45,8 @@ export default async function Result_Container({directory, name}:Props){
                     })
                 }
                 </div>
-                <div className={s.fileContainer}>
+                : null}
+                <div className={s.fileContainer} style={imageCount.length !== 0 ? {padding: "0.5rem 0 0 0"} : {}}>
                     {
                         files.data.map(file =>{
                             if(file.parent_id == directory.id && file.extension_type !== "image"){
