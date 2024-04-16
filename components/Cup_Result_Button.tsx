@@ -1,10 +1,10 @@
 import Link from "next/link";
-import extensionTrimmer from "../functions/extensionTrimmer";
 import { File, GetFileResponse } from "../interfaces";
 import s from "../styles/Page.module.css"
 
 interface Props{
     item: File
+    type: string
 }
 
 async function getFile(id:number){
@@ -42,12 +42,12 @@ async function getFile(id:number){
         }
       }
 
-export default async function Result_Button({item}:Props){
+export default async function Result_Button({item, type}:Props){
 
     const path:string = await getFile(item.id)
 
     return(
-        <Link className={s.item} href={path} target="_blank">
+        <Link className={`${s.item} ${type.split(" ")[0] === "Kombinationen" ? s.combinationButton : s.resultButton}`} href={path} target="_blank" role="button">
             <p>{fileRenamer(item.name)}</p>
         </Link>
     )

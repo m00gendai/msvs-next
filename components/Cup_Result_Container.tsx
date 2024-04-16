@@ -35,7 +35,7 @@ export default async function Result_Container({name, files}:Props){
                         const path:string[] = file.path.split("/")
                         if(`${path[4]} ${path[5]}` === name && file.extension_type !== "image"){
                             return(
-                                <Cup_Result_Button key={`result_${file.id}`} item={file}/>
+                                <Cup_Result_Button key={`result_${file.id}`} item={file} type={name}/>
                             )
                         }
                         
