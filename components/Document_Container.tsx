@@ -1,7 +1,6 @@
-import { File, FileResponse, GetFileResponse } from "../interfaces"
+import { File } from "../interfaces"
 import s from "../styles/Page.module.css"
-import Cup_Result_Image from "./Cup_Result_Image"
-import Cup_Result_Button from "./Cup_Result_Button"
+import Document_Button from "./Document_Button"
 
 
 interface Props{
@@ -25,13 +24,13 @@ export default async function Result_Container({name, files}:Props){
                         if(path[2] === "Dokmente"){
                             if(`${path[2]} ${path[3]}` === name){
                                 return(
-                                    <Cup_Result_Button key={`result_${file.id}`} item={file}/>
+                                    <Document_Button key={`result_${file.id}`} item={file}/>
                                 )
                             }
                         }
                         if(path[2] === "Jubiläum"){
                             if(path[3] === name){
-                                return <Cup_Result_Button key={`result_${file.id}`} item={file}/>
+                                return <Document_Button key={`result_${file.id}`} item={file}/>
                             }
                         }
                     })
