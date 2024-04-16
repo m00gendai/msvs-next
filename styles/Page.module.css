@@ -39,10 +39,17 @@
     padding: 1rem 0 0.5rem 0;
 }
 
+.loader{
+    
+}
+
 .imageItem{
     position: relative;
     width: 30%;
     aspect-ratio: 21/10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .imageItemCup{
