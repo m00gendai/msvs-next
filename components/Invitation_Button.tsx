@@ -30,7 +30,7 @@ export default async function Invitation_Button({item}:Props){
     const path:string = await getFile(item.id)
 
     return(
-        <Link className={s.item} href={path} target="_blank">
+        <Link className={`${s.item} ${s.documentButton}`} href={path} target="_blank" role="button">
             <p>{extensionTrimmer(item.name)}</p>
         </Link>
     )
