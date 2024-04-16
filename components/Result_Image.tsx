@@ -1,3 +1,4 @@
+import Loader from "../public/477.gif"
 import { GetFileResponse, File } from "../interfaces"
 import s from "../styles/Page.module.css"
 import Image from "next/image"
@@ -24,10 +25,14 @@ interface Props{
 
 export default async function Result_Image({file}:Props){
     const path:string = await getImage(file.id)
-    
+
     return(
         
             <div className={s.imageItem} key={`image_${file.id}`}>
+                <div className={s.loader}>
+                    <Image src={Loader} alt="Bild laden"/>
+                    <p>{`Lädt Bild...`}</p>
+                </div>
                 <Image 
                     src={path}
                     alt={"Bild"}
