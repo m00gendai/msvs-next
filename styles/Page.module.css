@@ -1,18 +1,6 @@
-.section {
-    width: 90%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-content: flex-start;
-    flex-wrap: wrap;
-    background: white;
-    position: relative;
-    padding: 0 0 2rem 0;
-}
-
 .results{
     position: relative;
-    width: 95%;
+    width: calc(95% - calc(var(--defaultContainerPadding) * 2));
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -20,6 +8,7 @@
     box-shadow: var(--containerBoxShadow);
     margin: 0 0 2rem 0;
     background: var(--containerBackground);
+    padding: var(--defaultContainerPadding);
 }
 
 .container{
@@ -36,8 +25,8 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 1rem;
-    padding: 1rem;
+    grid-gap: var(--defaultContainerPadding);
+    /* Padding 0.5rem  from imageContainer is set in Result_Container.tsx due to it being conditional styling depending on the presence of images */
 }
 
 .imageContainer{
@@ -46,7 +35,8 @@
     display:flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: var(--defaultContainerPadding);
+    padding: 1rem 0 0.5rem 0;
 }
 
 .imageItem{
@@ -68,7 +58,7 @@
     align-items: center;
     text-align: center;
     background: var(--buttonColor);
-    padding: 0.5rem;
+    padding: var(--defaultContainerPadding);
     text-decoration: none;
     color: black;
 }
@@ -80,6 +70,6 @@
 
 .image{
     position: relative;
-    max-width: 90%;
-    max-height: 250px;
+    max-width: var(--thumbnailMaxWidth);
+    max-height: var(--thumbnailMaxHeight);
 }
