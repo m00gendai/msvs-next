@@ -1,5 +1,4 @@
 import Link from "next/link"
-import s from "../../styles/Page.module.css"
 import Invitaitons from "../../components/Invitations"
 import Results from "../../components/Results"
 
@@ -10,7 +9,7 @@ export default async function Page(){
 
     return(
         <main>
-            <section className={s.section}>
+            <section className="section">
                 <h2>{`Pistole`}</h2>
                 <Invitaitons drive={process.env.KDRIVE_PIST_INV} currentYear={currentYear} />
                 <Results drive={process.env.KDRIVE_PIST_RES} currentYear={currentYear} />

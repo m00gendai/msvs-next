@@ -10,7 +10,7 @@ export default async function Page(){
 
     return(
         <main>
-            <section className={s.section}>
+            <section className="section">
                 <h2>{`Gewehr`}</h2>
                 <Invitaitons drive={process.env.KDRIVE_GEW_INV} currentYear={currentYear} />
                 <Results drive={process.env.KDRIVE_GEW_RES} currentYear={currentYear} />

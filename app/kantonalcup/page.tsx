@@ -1,5 +1,4 @@
 import Link from "next/link"
-import s from "../../styles/Page.module.css"
 import Cup_Invitations from "../../components/Cup_Invitations"
 import Cup_Results from "../../components/Cup_Results"
 
@@ -10,7 +9,7 @@ export default async function Page(){
 
     return(
         <main>
-            <section className={s.section}>
+            <section className="section">
                 <h2>{`Kantonalcup`}</h2>
                 <Cup_Invitations currentYear={currentYear} drive={process.env.KDRIVE_CUP} />
                 <Cup_Results currentYear={currentYear} drive={process.env.KDRIVE_CUP} />

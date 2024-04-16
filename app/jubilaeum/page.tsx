@@ -1,8 +1,6 @@
 import React from "react"
-import Cup_Result_Button from "../../components/Cup_Result_Button"
 import Document_Container from "../../components/Document_Container"
 import { CMS_Page, FileResponse } from "../../interfaces"
-import s from "../../styles/Page.module.css"
 import revalidate from "../actions/revalidate"
 
 async function getContent(){
@@ -52,7 +50,7 @@ export default async function Page(){
 
     return(
         <main>
-            <section className={s.section}>
+            <section className="section">
                 <h2>{`50 Jahre Matchschützenvereinigung Schaffhausen`}</h2>
                 {
                     content[0].content.chapter.map((item, index)=>{
