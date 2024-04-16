@@ -39,10 +39,6 @@
     padding: 1rem 0 0.5rem 0;
 }
 
-.loader{
-    
-}
-
 .imageItem{
     position: relative;
     width: 30%;
@@ -50,6 +46,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media only screen and (max-aspect-ratio:13/9){
+    .imageItem{
+        width: 100%;
+    }
 }
 
 .imageItemCup{
@@ -64,10 +66,21 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: var(--buttonColor);
-    padding: var(--defaultContainerPadding);
+    padding: calc(var(--defaultContainerPadding) / 2);
     text-decoration: none;
     color: black;
+    box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.8);
+}
+
+.itemLink{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
 }
 
 .item:hover{
@@ -79,4 +92,31 @@
     position: relative;
     max-width: var(--thumbnailMaxWidth);
     max-height: var(--thumbnailMaxHeight);
+}
+
+.documentButton{
+    background: var(--documentButtonColor);
+    color: white;
+}
+
+.documentButton:hover{
+    background: var(--documentButtonColorHover);
+}
+
+.resultButton{
+    background: var(--resultButtonColor);
+    color: black;
+}
+
+.resultButton:hover{
+    background: var(--resultButtonColorHover);
+}
+
+.combinationButton{
+    background: var(--combinationButtonColor);
+    color: black;
+}
+
+.combinationButton:hover{
+    background: var(--combinationButtonColorHover);
 }
