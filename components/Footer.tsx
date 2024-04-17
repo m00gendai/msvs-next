@@ -1,6 +1,5 @@
 import Link from "next/link"
 import s from "../styles/Footer.module.css"
-import { useMediaQuery } from '@react-hook/media-query'
 import React from "react"
 
 export default function Footer(){
