@@ -3,55 +3,62 @@
   width: 95%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  column-gap: 2rem;
-  row-gap: 4rem;
+  gap: var(--defaultContainerPadding);
 }
 
 .item{
   position: relative;
-  background: var(--containerBackground);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
   box-shadow: var(--containerBoxShadow);
   padding: 0;
-  border-radius: 0;
 }
 
 .header{
-
   position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  padding: 1rem;
+  background: black;
+  color: var(--bodyBackground);
+  margin: 0;
 }
 
 .title{
   position: relative;
   width: 100%;
   font-size: 1.25rem;
-  color: black;
   font-weight: bolder;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid black;
+  padding: var(--defaultContainerPadding);
 }
 
 .name{
   position: relative;
   width: 100%;
   font-size: 1rem;
-  color: black;
-  padding: 0.5rem 0;
+  color: var(--fontColor);
+  padding: var(--defaultContainerPadding);
+}
+
+.details{
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background: var(--containerBackground)!important;
 }
 
 .info{
   position: relative;
   width: 100%;
-  padding: 1rem;
+  padding: var(--defaultContainerPadding);
+  background: var(--containerBackground)!important;
 }
 
 .address{
@@ -68,4 +75,19 @@
   align-items: center;
   align-content: center;
   gap: 1rem;
+}
+
+.iconRow{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: var(--defaultContainerPadding);
+}
+
+.trigger{
+  position: relative;
+  background: var(--archiveButtonColor);
+  color: white;
 }
