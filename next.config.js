@@ -9,6 +9,12 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'cms.msvs.ch',
+        port: '',
+        pathname: '/storage/uploads/**',
+      },
     ],
   },
 }
