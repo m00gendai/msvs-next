@@ -61,7 +61,6 @@ export default async function Page(){
                             {directories.data ? directories.data.map(async directory=>{
                                 if(directory.name === item.title){
                                     const files:FileResponse = await getFiles(directory.id)
-                                    console.log(files)
                                     return <Document_Container key={directory.id} name={item.title} files={files.data}/>
                                 }
                             }) : null}
