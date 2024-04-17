@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import s from "../styles/Navbar.module.css"
 import React from "react"
+import { SlArrowDown } from "react-icons/sl"
 
 export default function Navbar(){
 
@@ -37,7 +38,7 @@ export default function Navbar(){
                 <Link className={s.link} href="/luft">Luft</Link>
                 <Link className={s.link} href="/kantonalcup">Kantonalcup</Link>
                 <div className={s.surLinkContainer} onMouseEnter={(e:React.MouseEvent)=>handleSubMenuTrigger(e)} onMouseLeave={(e:React.MouseEvent)=>handleSubMenuTrigger(e)}>
-                    <div className={s.link} >Die MSVS</div>
+                    <div className={s.link} >Die MSVS <SlArrowDown style={{margin: "0 0 0 1rem"}} /></div>
                     {visible?
                     <div className={s.subLinkContainer} >
                         <Link className={s.sublink} href="/vorstand">Vorstand</Link>
