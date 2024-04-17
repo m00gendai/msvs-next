@@ -2,7 +2,7 @@
     position: sticky;
     top: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 1);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,13 +48,16 @@
 }
 
 .linkContainer{
-    position: relative;
-    width: 80%;
+    position: absolute;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-    margin: 5vh 0 5vh 0;
+    top: 10vh;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,1);
+    padding: var(--defaultContainerPadding);
 }
 
 .subLinkContainer{
