@@ -17,7 +17,8 @@
   --archiveButtonColorHover: rgba(0, 128, 0, 0.8);
 
   --fontColor: rgba(0,0,0,1);
-  --containerBackground: #f5f5f5;
+  --containerBackground: rgba(245, 245, 245, 1);
+  --containerBackgroundAlternate: rgba(220, 220, 220, 1);
   --containerBoxShadow: 0px 0px 1px 0px black;
   --defaultContainerPadding: 1rem;
   --thumbnailMaxHeight: 250px;
