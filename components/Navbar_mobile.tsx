@@ -38,19 +38,19 @@ export default function Navbar_Mobile(){
             {
             visible ?
                 <div className={s.linkContainer}>
-                    <Link className={s.link} href="/">Home</Link>
-                    <Link className={s.link} href="/gewehr">Gewehr</Link>
-                    <Link className={s.link} href="/pistole">Pistole</Link>
-                    <Link className={s.link} href="/luft">Luft</Link>
-                    <Link className={s.link} href="/kantonalcup">Kantonalcup</Link>
+                    <Link className={s.link} onClick={()=>handleMenu()} href="/">Home</Link>
+                    <Link className={s.link} onClick={()=>handleMenu()} href="/gewehr">Gewehr</Link>
+                    <Link className={s.link} onClick={()=>handleMenu()} href="/pistole">Pistole</Link>
+                    <Link className={s.link} onClick={()=>handleMenu()} href="/luft">Luft</Link>
+                    <Link className={s.link} onClick={()=>handleMenu()} href="/kantonalcup">Kantonalcup</Link>
                     <div className={s.link} >die MSVS</div>
                     <div className={s.subLinkContainer} >
-                        <Link className={s.link} href="/vorstand">Vorstand</Link>
-                        <Link className={s.link} href="/jubilaeum">Jubiläum</Link>
-                        <Link className={s.link} href="/bilder">Bilder</Link>
-                        <Link className={s.link} href="/dokumente">Dokumente</Link>
+                        <Link className={s.link} onClick={()=>handleMenu()} href="/vorstand">Vorstand</Link>
+                        <Link className={s.link} onClick={()=>handleMenu()} href="/jubilaeum">Jubiläum</Link>
+                        <Link className={s.link} onClick={()=>handleMenu()} href="/bilder">Bilder</Link>
+                        <Link className={s.link} onClick={()=>handleMenu()} href="/dokumente">Dokumente</Link>
                     </div>
-                    <Link className={s.link} href="/links">Links</Link>
+                    <Link className={s.link} onClick={()=>handleMenu()} href="/links">Links</Link>
                 </div>
             : 
                 null
