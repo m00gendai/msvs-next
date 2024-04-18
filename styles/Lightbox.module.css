@@ -42,6 +42,19 @@
     font-size: 3rem;
 }
 
+@media only screen and (max-aspect-ratio: 13/9){
+    .inner{
+        width: calc(100% - 2rem);
+        max-width: 1200px;
+        height: calc(100% - 2rem);
+        max-height: 1200px;
+    }
+
+    .controls{
+        font-size: 2rem;
+    }
+}
+
 .prev{
     left: 0;
     height: 100%;
