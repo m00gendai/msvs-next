@@ -1,37 +1,68 @@
+"use client"
+
 import Image from "next/image"
 import s from "../styles/Image_Folder.module.css"
-
-async function getImage(id:number){
-    const getImg = await fetch(`https://api.infomaniak.com/2/drive/608492/files/${id}/preview`, {
-        method: "GET",
-        headers: {
-            Authorization: `Bearer ${process.env.KDRIVE}`,
-            "Content-Type" : "application/json"
-        },
-    })
-    // Magic by https://stackoverflow.com/questions/72036447/createobjecturl-error-argument-must-be-an-instance-of-blob-received-an-instan
-    const imgBuffer = await getImg.arrayBuffer()
-    const img = Buffer.from(imgBuffer).toString("base64")
-    return img
-}
-
+import d from "../styles/Lightbox.module.css"
+import { useState } from "react"
+import { SlArrowLeft, SlArrowRight, SlClose } from "react-icons/sl"
 
 interface Props{
-    id: number
+    images: {id: number, parent:number, base64: string}[]
+    index: number
 }
 
-export default async function Image_Image({id}:Props){
+export default function Image_Image({images, index}:Props){
 
-    const src = await getImage(id)
+    const totalIndex = images.length-1
+
+    const [currentIndex, setCurrentIndex] = useState<number>(0)
+    const [visible, setVisible] = useState<boolean>(false)
+
+    function handleClick(indx:number){
+        setCurrentIndex(indx)
+        setVisible(true)
+    }
+
+    function previous(){
+        const index = currentIndex-1 < 0 ? totalIndex : currentIndex-1
+        setCurrentIndex(index)
+    }
+
+    function next(){
+        const index = currentIndex+1 > totalIndex ? 0 : currentIndex+1
+        setCurrentIndex(index)
+    }
+
+    function close(){
+        setVisible(false)
+    }
 
     return(
+        <>
+        {visible ? 
+        <div className={d.veil}>
+            <div className={`${d.controls} ${d.prev}`} onClick={()=>previous()}><SlArrowLeft /></div>
+                <div className={`${d.controls} ${d.next}`} onClick={()=>next()}><SlArrowRight /></div>
+                <div className={`${d.controls} ${d.close}`} onClick={()=>close()}><SlClose /></div>
+            <div className={d.inner}>
+                <Image 
+                    src={`data:image;base64, ${images[currentIndex].base64}`}
+                    alt={""}
+                    fill={true}
+                    style={{objectFit: "contain"}}
+                />
+            </div>
+        </div> : null}
         <div className={s.image}>
             <Image 
-                src={`data:image;base64, ${src}`}
+                src={`data:image;base64, ${images[index].base64}`}
                 alt={""}
                 fill={true}
                 style={{objectFit: "cover"}}
+                onClick={()=>handleClick(index)}
             />
         </div>
+        </>
+        
     )
 }
