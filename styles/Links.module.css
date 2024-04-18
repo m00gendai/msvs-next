@@ -17,7 +17,7 @@
 
 @media only screen and (max-aspect-ratio: 13/9){
     .inner{
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 }
 
