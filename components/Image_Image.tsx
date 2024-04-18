@@ -46,7 +46,7 @@ export default function Image_Image({images, index}:Props){
                 <div className={`${d.controls} ${d.close}`} onClick={()=>close()}><SlClose /></div>
             <div className={d.inner}>
                 <Image 
-                    src={`data:image;base64, ${images[currentIndex].base64}`}
+                    src={`${images[currentIndex].base64}`}
                     alt={""}
                     fill={true}
                     style={{objectFit: "contain"}}
@@ -55,7 +55,7 @@ export default function Image_Image({images, index}:Props){
         </div> : null}
         <div className={s.image}>
             <Image 
-                src={`data:image;base64, ${images[index].base64}`}
+                src={`${images[index].base64}`}
                 alt={""}
                 fill={true}
                 style={{objectFit: "cover"}}

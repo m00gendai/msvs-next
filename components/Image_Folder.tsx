@@ -1,4 +1,4 @@
-import { FileResponse } from "../interfaces"
+import { FileResponse, GetFileResponse } from "../interfaces"
 import s from "../styles/Image_Folder.module.css"
 import Image_Image from "./Image_Image"
 
@@ -17,17 +17,19 @@ async function getImages(id:number){
 }
 
 async function getImage(id:number){
-    const getImg = await fetch(`https://api.infomaniak.com/2/drive/608492/files/${id}/preview`, {
+    const getUrl = await fetch(`https://api.infomaniak.com/2/drive/${process.env.KDRIVE_ROOT}/files/${id}/temporary_url`,{
         method: "GET",
-        headers: {
-            Authorization: `Bearer ${process.env.KDRIVE}`,
-            "Content-Type" : "application/json"
-        },
-    })
-    // Magic by https://stackoverflow.com/questions/72036447/createobjecturl-error-argument-must-be-an-instance-of-blob-received-an-instan
-    const imgBuffer = await getImg.arrayBuffer()
-    const img = Buffer.from(imgBuffer).toString("base64")
-    return img
+            headers: {
+                Authorization: `Bearer ${process.env.KDRIVE}`,
+                "Content-Type" : "application/json",
+            },
+        })
+        const url:GetFileResponse = await getUrl.json()
+        
+        if(url.result === "error"){
+            return `${process.env.ARCHIVE}`
+        }
+        return url.data.temporary_url 
 }
 
 interface Props{
