@@ -1,3 +1,30 @@
+:root{
+  --bodyBackground: rgba(250,250,0,1);
+  --sectionBackground: rgba(255,255,255,1);
+  --buttonColor: rgba(250,250,0,1);
+  --buttonColorHover: gold;
+
+  --documentButtonColor: rgb(0, 0, 250, 0.6);
+  --documentButtonColorHover: rgb(0, 0, 250, 0.8);
+
+  --resultButtonColor: rgba(125, 250, 0, 0.8);
+  --resultButtonColorHover: rgba(125, 250, 0, 1);
+
+  --combinationButtonColor: rgba(250, 125, 0, 0.8);
+  --combinationButtonColorHover: rgba(250, 125, 0, 1);
+
+  --archiveButtonColor: rgba(0, 128, 0, 1);
+  --archiveButtonColorHover: rgba(0, 128, 0, 0.8);
+
+  --fontColor: rgba(0,0,0,1);
+  --containerBackground: rgba(245, 245, 245, 1);
+  --containerBackgroundAlternate: rgba(220, 220, 220, 1);
+  --containerBoxShadow: 0px 0px 1px 0px black;
+  --defaultContainerPadding: 1rem;
+  --thumbnailMaxHeight: 250px;
+  --thumbnailMaxWidth: 90%;
+}
+
 body{
   padding: 0;
   margin: 0;
@@ -8,20 +35,21 @@ body{
   bottom: 0;
   right: 0;
   display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  flex-wrap: wrap;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#__next{
+.radix-themes{
   position: relative;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-content: flex-start;
-  background: rgba(0, 0, 0, 1);
   flex-wrap: wrap;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  background: rgba(0,0,0,1)!important;
 }
+
 
 main {
   position: relative;
@@ -31,8 +59,25 @@ main {
   flex-wrap: wrap;
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
-  background: rgba(255,255,0,1);
+  background: var(--bodyBackground);
+}
 
+.section{
+  width: 90%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  background: white;
+  position: relative;
+  padding: 0 0 2rem 0;
+}
+
+@media only screen and (max-aspect-ratio: 13/9){
+  .section{
+    width: 100%;
+  }
 }
 
 h1 {
@@ -53,27 +98,39 @@ h1 {
 
 h2{
   width: 100%;
+  font-size: 2rem;
   margin: 0;
-  padding: 1rem 0 0.5rem 0.5rem;
+  padding: 2rem 0 2rem 0;
   text-align: left;
-  background: yellow;
+  background: var(--bodyBackground);
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  hyphens: auto;
+}
+
+@media only screen and (max-aspect-ratio: 13/9){
+  h2{
+    padding: 2rem 0 2rem 2.5%;
+  }
 }
 
 h3{
   position: relative;
-  width: 100%;
+  width: 95%;
   text-align: left;
-  padding: 0 0 0 1rem;
+  font-size: 1.375rem;
+  padding: 0;
+  margin: var(--defaultContainerPadding) 0;
 }
 
 h4 {
   position: relative;
   width: 100%;
   text-align: left;
-  padding: 0 0 0 1rem;
+  font-size: 1.125rem;
+  padding: 0;
+  margin: 0 0 var(--defaultContainerPadding) 0;
 }
 
 .archiv{
@@ -83,15 +140,21 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ffff00;
+  background: var(--archiveButtonColor);
   margin: 0 0 2rem 0;
   text-decoration: none;
-  color: black;
+  color: white;
+}
+
+@media only screen and (max-aspect-ratio: 13/9){
+  .archiv{
+    width: 95%;
+  }
 }
 
 .archiv:hover{
   cursor: pointer;
-  background: gold;
+  background: var(--archiveButtonColorHover);
 }
 
 .archiv > h3{
@@ -100,12 +163,19 @@ h4 {
   padding: 0;
 }
 
-.noEntry{
+@media screen and (max-aspect-ratio: 13/9){
+  .desktop{
+    display: none;
+  }
+}
+
+@media screen and (min-aspect-ratio: 13/9){
+  .mobile{
+    display: none;
+  }
+}
+
+.textContent{
   position: relative;
   width: 95%;
-  text-align: center;
-  box-shadow: 0px 0px 1px 0px black;
-  margin: 0 0 2rem 0;
-  padding: 1rem 0 1rem 0;
-  background: #f5f5f5
 }

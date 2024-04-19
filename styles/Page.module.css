@@ -1,45 +1,63 @@
-.section {
-    width: 90%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-content: flex-start;
-    flex-wrap: wrap;
-    background: white;
-    position: relative;
-}
-
 .results{
     position: relative;
-    width: 95%;
+    width: calc(95% - calc(var(--defaultContainerPadding) * 2));
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 0px 1px 0px black;
+    box-shadow: var(--containerBoxShadow);
     margin: 0 0 2rem 0;
-    background: #f5f5f5
+    background: var(--containerBackground);
+    padding: var(--defaultContainerPadding);
 }
 
 .container{
     position: relative;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.fileContainer{
+    position: relative;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 1rem;
-    padding: 1rem;
+    grid-gap: var(--defaultContainerPadding);
+    /* Padding 0.5rem  from imageContainer is set in Result_Container.tsx due to it being conditional styling depending on the presence of images */
 }
 
 .imageContainer{
     position: relative;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--defaultContainerPadding);
+    padding: 1rem 0 0.5rem 0;
 }
 
-.imageContainer > * {
-    margin: 1rem;
+.imageItem{
+    position: relative;
+    width: 30%;
+    aspect-ratio: 21/10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-aspect-ratio:13/9){
+    .imageItem{
+        width: 100%;
+    }
+}
+
+.imageItemCup{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 42/10;
 }
 
 .item{
@@ -48,17 +66,57 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: yellow;
-    padding: 0.5rem;
+    padding: calc(var(--defaultContainerPadding) / 2);
+    text-decoration: none;
+    color: black;
+    box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.8);
+}
+
+.itemLink{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
 }
 
 .item:hover{
     cursor:pointer;
-    background:gold;
+    background:var(--buttonColorHover);
 }
 
 .image{
     position: relative;
-    max-width: 90%;
-    max-height: 250px;
+    max-width: var(--thumbnailMaxWidth);
+    max-height: var(--thumbnailMaxHeight);
+}
+
+.documentButton{
+    background: var(--documentButtonColor);
+    color: white;
+}
+
+.documentButton:hover{
+    background: var(--documentButtonColorHover);
+}
+
+.resultButton{
+    background: var(--resultButtonColor);
+    color: black;
+}
+
+.resultButton:hover{
+    background: var(--resultButtonColorHover);
+}
+
+.combinationButton{
+    background: var(--combinationButtonColor);
+    color: black;
+}
+
+.combinationButton:hover{
+    background: var(--combinationButtonColorHover);
 }

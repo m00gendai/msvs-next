@@ -2,7 +2,7 @@
     position: sticky;
     top: 0;
     width: 100%;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,1);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,7 +45,7 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-start;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,1);
     padding: 0 0.5rem 0 0.5rem;
 }
 
@@ -55,6 +55,9 @@
     font-weight: normal;
     margin: 1rem;
     text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .link:hover{
@@ -76,10 +79,13 @@
     width: 100%;
     font-size: 1rem;
     font-weight: normal;
-    margin: 0.25rem;
     border-bottom: 1px solid yellow;
-    padding: 0.25rem;
+    padding: var(--defaultContainerPadding);
     text-decoration: none;
+}
+
+.sublink:last-child{
+    border: none;
 }
 
 .sublink:hover {
