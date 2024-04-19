@@ -1,4 +1,9 @@
 import Links from "../../components/Links"
+import { getPageMetadata } from "../../functions/getPageMetadata"
+
+export async function generateMetadata(){
+    return getPageMetadata("Links")
+}
 
 export default async function Page(){
 

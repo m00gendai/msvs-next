@@ -1,6 +1,11 @@
 import Link from "next/link"
 import Cup_Invitations from "../../components/Cup_Invitations"
 import Cup_Results from "../../components/Cup_Results"
+import { getPageMetadata } from "../../functions/getPageMetadata"
+
+export async function generateMetadata(){
+    return getPageMetadata("Kantonalcup")
+}
 
 export default async function Page(){
 

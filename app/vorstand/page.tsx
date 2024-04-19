@@ -1,4 +1,9 @@
 import Vorstand from "../../components/Vorstand"
+import { getPageMetadata } from "../../functions/getPageMetadata"
+
+export async function generateMetadata(){
+    return getPageMetadata("Vorstand")
+}
 
 export default async function Page(){
 

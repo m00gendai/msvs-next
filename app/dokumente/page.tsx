@@ -1,4 +1,9 @@
 import Documents from "../../components/Documents"
+import { getPageMetadata } from "../../functions/getPageMetadata"
+
+export async function generateMetadata(){
+    return getPageMetadata("Dokumente")
+}
 
 export default async function Page(){
 

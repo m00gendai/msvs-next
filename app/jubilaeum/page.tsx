@@ -2,6 +2,7 @@ import React from "react"
 import Document_Container from "../../components/Document_Container"
 import { CMS_Page, FileResponse } from "../../interfaces"
 import revalidate from "../actions/revalidate"
+import { getPageMetadata } from "../../functions/getPageMetadata"
 
 async function getContent(){
     const getContent:Response = await fetch(`https://cms.msvs.ch/api/content/items/page`, {
@@ -41,6 +42,10 @@ async function getFiles(id:number){
 
     const files:FileResponse = await getFiles.json()
     return files
+}
+
+export async function generateMetadata(){
+    return getPageMetadata("Jubiläum")
 }
 
 export default async function Page(){

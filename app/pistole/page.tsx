@@ -1,6 +1,11 @@
 import Link from "next/link"
 import Invitaitons from "../../components/Invitations"
 import Results from "../../components/Results"
+import { getPageMetadata } from "../../functions/getPageMetadata"
+
+export async function generateMetadata(){
+    return getPageMetadata("Pistole")
+}
 
 export default async function Page(){
 

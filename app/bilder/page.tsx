@@ -1,4 +1,9 @@
 import Image_Container from "../../components/Image_Container"
+import { getPageMetadata } from "../../functions/getPageMetadata"
+
+export async function generateMetadata(){
+    return getPageMetadata("Bilder")
+}
 
 export default async function Page(){
     return(

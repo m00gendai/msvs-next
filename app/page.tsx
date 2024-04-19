@@ -5,6 +5,7 @@ import Jubi from "../public/Jubi2.png"
 import Logo from "../public/logo.gif"
 import News from "../components/News"
 import { FileResponse, GetFileResponse } from "../interfaces"
+import { getPageMetadata } from "../functions/getPageMetadata"
 
 async function getJoinFile(){
     const getFile = await fetch(`https://api.infomaniak.com/2/drive/${process.env.KDRIVE_ROOT}/files/${process.env.KDRIVE_JOIN}/files`, {
@@ -35,6 +36,9 @@ async function getFilePath(id:number){
         return url.data.temporary_url 
     }
 
+export async function generateMetadata(){
+    return getPageMetadata("Home")
+}
 
 export default async function Home() {
 
