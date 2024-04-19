@@ -34,6 +34,16 @@ export interface File{
   path: string
 }
 
+export interface Legal{
+  text: string
+  _modified: number
+  _mby: string
+  _created: number
+  _state: number
+  _cby: string
+  _id: string
+}
+
 export interface CMS_Page{
   title: string
   content: CMS_Page_Content
