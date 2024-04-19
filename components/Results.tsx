@@ -31,7 +31,7 @@ export default async function Results({drive, currentYear}:Props){
     
     return(
         <>
-        <h3>{`Resultate`}</h3>
+        <h3>{`${drive === process.env.KDRIVE_AIR_WM ? "Wintermeisterschaft" : "Resultate"}`}</h3>
         {
             directory.data.length === 0 ? 
                 <div className={s.results}>
@@ -40,7 +40,7 @@ export default async function Results({drive, currentYear}:Props){
             :
                 directory.data.map(dir =>{
                     return (
-                        <Result_Container directory={dir} key={`Results_${dir.id}`} name={dir.path.split("/")[dir.path.split("/").length-2]}/>
+                        <Result_Container directory={dir} key={`Results_${dir.id}`} name={`${drive === process.env.KDRIVE_AIR_WM ? `Saison ${currentYear-1}/${currentYear}` : dir.path.split("/")[dir.path.split("/").length-2]}`}/>
                     )
                 })
             }
