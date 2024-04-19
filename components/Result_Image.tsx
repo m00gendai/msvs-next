@@ -1,4 +1,4 @@
-import Loader from "../public/477.gif"
+import Loader from "../public/loader.gif"
 import { GetFileResponse, File } from "../interfaces"
 import s from "../styles/Page.module.css"
 import Image from "next/image"

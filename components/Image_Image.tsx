@@ -5,6 +5,7 @@ import s from "../styles/Image_Folder.module.css"
 import d from "../styles/Lightbox.module.css"
 import { useState } from "react"
 import { SlArrowLeft, SlArrowRight, SlClose } from "react-icons/sl"
+import Loader from "../public/loader.gif"
 
 interface Props{
     images: {id: number, parent:number, base64: string}[]
@@ -54,6 +55,10 @@ export default function Image_Image({images, index}:Props){
             </div>
         </div> : null}
         <div className={s.image}>
+        <div className={s.loader}>
+                    <Image src={Loader} alt="Bild laden"/>
+                    <p>{`Lädt Bild...`}</p>
+                </div>
             <Image 
                 src={`${images[index].base64}`}
                 alt={""}
