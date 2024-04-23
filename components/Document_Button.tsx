@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { File, GetFileResponse } from "../interfaces";
 import s from "../styles/Page.module.css"
+import revalidate from "../app/actions/revalidate";
 
 interface Props{
     item: File
@@ -13,6 +14,9 @@ async function getFile(id:number){
                 Authorization: `Bearer ${process.env.KDRIVE}`,
                 "Content-Type" : "application/json",
             },
+            next: {
+                tags: ["document"]
+            }
         })
         const url:GetFileResponse = await getUrl.json()
         
@@ -23,7 +27,7 @@ async function getFile(id:number){
     }
 
 export default async function Document_Button({item}:Props){
-
+    revalidate("document")
     const path:string = await getFile(item.id)
 
     return(

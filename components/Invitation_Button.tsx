@@ -2,6 +2,7 @@ import Link from "next/link";
 import extensionTrimmer from "../functions/extensionTrimmer";
 import { File, GetFileResponse } from "../interfaces";
 import s from "../styles/Page.module.css"
+import revalidate from "../app/actions/revalidate";
 
 interface Props{
     item: File
@@ -14,6 +15,9 @@ async function getFile(id:number){
                 Authorization: `Bearer ${process.env.KDRIVE}`,
                 "Content-Type" : "application/json",
             },
+            next:{
+                tags: ["invitation"]
+            }
         })
         
         const url:GetFileResponse = await getUrl.json()
@@ -26,7 +30,7 @@ async function getFile(id:number){
     }
 
 export default async function Invitation_Button({item}:Props){
-
+    revalidate("invitation")
     const path:string = await getFile(item.id)
 
     return(

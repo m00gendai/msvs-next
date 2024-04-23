@@ -52,7 +52,6 @@ export default async function Invitaitons({drive, currentYear}:Props){
                             files.data.map(file =>{
                                 return(
                                     <Invitation_Button key={`invitation_${file.id}`} item={file}/>
-                                        
                                 )
                             })
                         }
