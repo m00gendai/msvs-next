@@ -6,6 +6,8 @@ import Logo from "../public/logo.gif"
 import News from "../components/News"
 import { FileResponse, GetFileResponse } from "../interfaces"
 import { getPageMetadata } from "../functions/getPageMetadata"
+import { Suspense } from "react"
+import Loader_News from "../components/Loader_News"
 
 async function getJoinFile(){
     const getFile = await fetch(`https://api.infomaniak.com/2/drive/${process.env.KDRIVE_ROOT}/files/${process.env.KDRIVE_JOIN}/files`, {
@@ -61,7 +63,9 @@ export default async function Home() {
             </div>
         </section>
         <section className={s.news}>
+            <Suspense fallback={<Loader_News />}>
             <News />
+            </Suspense>
         </section>
         </main>
 

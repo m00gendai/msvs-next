@@ -3,6 +3,9 @@ import Invitaitons from "../../components/Invitations"
 import Results from "../../components/Results"
 import Results_WM from "../../components/Results_WM"
 import { getPageMetadata } from "../../functions/getPageMetadata"
+import { Suspense } from "react"
+import Loader_Invite from "../../components/Loader_Invite"
+import Loader_Result from "../../components/Loader_Result"
 
 export async function generateMetadata(){
     return getPageMetadata("Luft")
@@ -17,9 +20,15 @@ export default async function Page(){
         <main>
             <section className="section">
                 <h2>{`Luft`}</h2>
+                <Suspense fallback={<Loader_Invite />}>
                 <Invitaitons drive={process.env.KDRIVE_AIR_INV} currentYear={currentYear} />
+                </Suspense>
+                <Suspense fallback={<Loader_Result />}>
                 <Results_WM drive={process.env.KDRIVE_AIR_WM} currentYear={currentYear} />
+                </Suspense>
+                <Suspense fallback={<Loader_Result />}>
                 <Results drive={process.env.KDRIVE_AIR_RES} currentYear={currentYear} />
+                </Suspense>
                 <Link className="archiv" href={`https://kdrive.infomaniak.com/app/share/${process.env.KDRIVE_ROOT}/225d4d16-dff3-47ab-ae41-773504b219d5`} target={`_blank`} ><h3>Archiv</h3></Link>
             </section>
         </main>
