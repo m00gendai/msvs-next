@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import s from '../styles/Home.module.css'
-import Jubi from "../public/Jubi2.png"
+import Jubi from "../public/front_pist.jpg"
 import Logo from "../public/logo.gif"
 import News from "../components/News"
 import { FileResponse, GetFileResponse } from "../interfaces"
