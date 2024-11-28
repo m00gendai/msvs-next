@@ -1,4 +1,3 @@
-import revalidate from "../app/actions/revalidate"
 import { File, FileResponse, GetFileResponse } from "../interfaces"
 import s from "../styles/Page.module.css"
 import Result_Button from "./Result_Button"
@@ -11,9 +10,6 @@ async function getFiles(id:number){
                 Authorization: `Bearer ${process.env.KDRIVE}`,
                 "Content-Type" : "application/json"
             },
-            next: {
-                tags: ["ResultFiles"]
-              }
         })
     
         const files:FileResponse = await getFiles.json()
@@ -27,7 +23,6 @@ interface Props{
 
 export default async function Result_Container({directory, name}:Props){
 
-    revalidate("ResultFiles")
     const files:FileResponse = await getFiles(directory.id)
     const imageCount:File[] = files.data.filter(file => file.extension_type === "image")
     return(

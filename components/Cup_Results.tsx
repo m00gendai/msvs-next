@@ -1,4 +1,3 @@
-import revalidate from "../app/actions/revalidate"
 import { FileResponse, File } from "../interfaces"
 import Cup_Result_Container from "./Cup_Result_Container"
 import s from "../styles/Page.module.css"
@@ -30,9 +29,6 @@ async function getFiles(id:number){
             Authorization: `Bearer ${process.env.KDRIVE}`,
             "Content-Type" : "application/json"
         },
-        next: {
-            tags: ["CupFiles"]
-          }
     })
 
     const directory:FileResponse = await getDirectory.json()
@@ -85,7 +81,7 @@ function sortRoundNames(names:Set<string>, rounds:number){
 }
 
 export default async function Cup_Results({drive, currentYear}:Props){
-    revalidate("CupFiles")
+
     const directory:FileResponse = await getDirectory(currentYear, drive)
     if(directory.data.length === 0){
         return (

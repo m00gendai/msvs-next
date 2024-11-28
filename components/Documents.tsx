@@ -1,4 +1,3 @@
-import revalidate from "../app/actions/revalidate"
 import { FileResponse } from "../interfaces"
 import Result_Container from "./Result_Container"
 
@@ -9,9 +8,6 @@ async function getDirectory(){
             Authorization: `Bearer ${process.env.KDRIVE}`,
             "Content-Type" : "application/json"
         },
-        next: {
-            tags: ["Documents"]
-          }
     })
 
     const directory:FileResponse = await getDirectory.json()
@@ -20,7 +16,6 @@ async function getDirectory(){
 
 export default async function Results(){
 
-    revalidate("Documents")
     const directory:FileResponse = await getDirectory()
     
     return(

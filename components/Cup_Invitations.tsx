@@ -1,4 +1,3 @@
-import revalidate from "../app/actions/revalidate"
 import { FileResponse } from "../interfaces"
 import s from "../styles/Page.module.css"
 import Invitation_Button from "./Invitation_Button"

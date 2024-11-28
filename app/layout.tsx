@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body>
-        <Theme>
+        <Theme radius="none">
       <Navbar_Mobile />
         <Navbar />
         {children}

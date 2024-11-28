@@ -20,7 +20,7 @@ async function getFiles(){
 export default async function News(){
 
     const items:FileResponse =  await getFiles()
-
+console.log(items)
     return(
         <div className={s.container}>
         <div className={s.heading}><h2 className={s.h2}>News</h2><News_Info /></div>

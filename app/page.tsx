@@ -1,7 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 import s from '../styles/Home.module.css'
-import Jubi from "../public/front_pist.jpg"
+import MSVSP from "../public/MSVSP.jpg"
+import MSVSG from "../public/MSVSG.jpg"
 import Logo from "../public/logo.gif"
 import News from "../components/News"
 import { FileResponse, GetFileResponse } from "../interfaces"
@@ -54,12 +55,11 @@ export default async function Home() {
         <section className={s.section}>
           <h2>Home</h2> 
           <Link className={s.image} href="/jubilaeum">
-          <Image src={Jubi} fill={true} style={{objectFit: "contain"}} alt="Gruppenbild MSVS" priority/>   
+          <Image src={Math.floor(Math.random() * 100)%2 === 0 ? MSVSG : MSVSP} fill={true} style={{objectFit: "cover"}} alt="Introbilder" priority/>   
           </Link>        
             <div className={s.container}>
               <Link href="/kantonalcup" className={s.button}>Kantonalcup</Link>
               <Link href={path} className={s.button}>Mitglied werden</Link>
-              <Link href="/jubilaeum" className={s.buttonLong}>Jubiläum</Link>
             </div>
         </section>
         <section className={s.news}>
