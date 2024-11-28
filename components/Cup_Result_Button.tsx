@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { File, GetFileResponse } from "../interfaces";
 import s from "../styles/Page.module.css"
-import revalidate from "../app/actions/revalidate";
 
 interface Props{
     item: File
@@ -15,9 +14,7 @@ async function getFile(id:number){
                 Authorization: `Bearer ${process.env.KDRIVE}`,
                 "Content-Type" : "application/json",
             },
-            next: {
-              tags: ["cupResult"]
-            }
+
         })
         const url:GetFileResponse = await getUrl.json()
         
@@ -47,7 +44,7 @@ async function getFile(id:number){
       }
 
 export default async function Result_Button({item, type}:Props){
-    revalidate("cupResult")
+
     const path:string = await getFile(item.id)
 
     return(

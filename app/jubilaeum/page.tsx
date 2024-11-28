@@ -1,7 +1,6 @@
 import React from "react"
 import Document_Container from "../../components/Document_Container"
 import { CMS_Page, FileResponse } from "../../interfaces"
-import revalidate from "../actions/revalidate"
 import { getPageMetadata } from "../../functions/getPageMetadata"
 
 async function getContent(){
@@ -35,9 +34,7 @@ async function getFiles(id:number){
             Authorization: `Bearer ${process.env.KDRIVE}`,
             "Content-Type" : "application/json"
         },
-        next: {
-            tags: ["jubiFiles"]
-          }
+
     })
 
     const files:FileResponse = await getFiles.json()
@@ -49,7 +46,7 @@ export async function generateMetadata(){
 }
 
 export default async function Page(){
-    revalidate("jubiFiles")
+
     const content:CMS_Page[] = await getContent()
     const directories:FileResponse = await getDirectories()
 

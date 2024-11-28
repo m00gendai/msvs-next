@@ -1,4 +1,3 @@
-import revalidate from "../app/actions/revalidate"
 import { File, FileResponse, GetFileResponse } from "../interfaces"
 import s from "../styles/Page.module.css"
 import Cup_Result_Image from "./Cup_Result_Image"

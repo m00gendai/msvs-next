@@ -1,7 +1,6 @@
 import { Card, Inset } from "@radix-ui/themes"
 import { Board } from "../interfaces"
 import s from "../styles/Vorstand.module.css"
-import revalidate from "../app/actions/revalidate"
 import Vorstand_Info from "./Vorstand_Info"
 
 async function getContent(){
@@ -10,16 +9,14 @@ async function getContent(){
         headers: {
             "api-key": process.env.CMS!
         },
-        next:{
-            tags: ["board"]
-        }
+
     })
     const content:Board[] = await getContent.json()
     return content
 }
 
 export default async function Vorstand(){
-    revalidate("board")
+
     const content:Board[] = await getContent()
 
     return(

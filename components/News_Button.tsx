@@ -3,7 +3,7 @@ import extensionTrimmer from "../functions/extensionTrimmer";
 import { File, GetFileResponse } from "../interfaces";
 import s from "../styles/News.module.css"
 import { getNewsType } from "../functions/getNewsType";
-import revalidate from "../app/actions/revalidate";
+
 
 interface Props{
     item: File
@@ -16,9 +16,7 @@ async function getFile(id:number){
                 Authorization: `Bearer ${process.env.KDRIVE}`,
                 "Content-Type" : "application/json",
             },
-            next: {
-                tags: ["news"]
-            }
+
         })
         const url:GetFileResponse = await getUrl.json()
         
@@ -29,7 +27,7 @@ async function getFile(id:number){
     }
 
 export default async function NewsButton({item}:Props){
-    revalidate("news")
+
     const path:string = await getFile(item.id)
     const itemType:{type:JSX.Element, document:JSX.Element} = getNewsType(item.path)
 
