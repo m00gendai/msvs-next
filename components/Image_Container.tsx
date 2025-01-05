@@ -10,7 +10,7 @@ async function getDirectories(){
             Authorization: `Bearer ${process.env.KDRIVE}`,
             "Content-Type" : "application/json"
         },
-
+        cache: 'no-store'
     })
 
     const directories:FileResponse = await getDirectories.json()
