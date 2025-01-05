@@ -11,7 +11,7 @@ async function getFiles(){
             Authorization: `Bearer ${process.env.KDRIVE}`,
             "Content-Type" : "application/json"
         },
-
+        cache: 'no-store'
     })
     const sourceDirectoryList:FileResponse = await getSourceDirectoryList.json()
     return sourceDirectoryList
