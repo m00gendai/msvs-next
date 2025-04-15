@@ -2,6 +2,8 @@ import React from "react"
 import Document_Container from "../../components/Document_Container"
 import { CMS_Page, FileResponse } from "../../interfaces"
 import { getPageMetadata } from "../../functions/getPageMetadata"
+import Image_Folder from "../../components/Image_Folder"
+import s from "../../styles/Image_Folder.module.css"
 
 async function getContent(){
     const getContent:Response = await fetch(`https://cms.msvs.ch/api/content/items/page`, {
@@ -66,6 +68,9 @@ export default async function Page(){
                                     return <Document_Container key={directory.id} name={item.title} files={files.data}/>
                                 }
                             }) : null}
+                            <div className={s.imageContainer}>
+                            {index === 0 ? <Image_Folder key={19258} id={19258} name={"Jubiläumsbuch"} index={0}/> : <Image_Folder key={18575} id={18575} name={"Jubiläum 2024"} index={0}/>}
+                            </div>
                             </React.Fragment>
                         )
                     })
