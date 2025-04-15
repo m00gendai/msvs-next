@@ -59,6 +59,7 @@ export default async function Home() {
           </Link>        
             <div className={s.container}>
               <Link href="/kantonalcup" className={s.button}>Kantonalcup</Link>
+              <Link href="/jubilaeum" className={s.button}>Jubiläumsbuch</Link>
               <Link href={path} className={s.button}>Mitglied werden</Link>
             </div>
         </section>
