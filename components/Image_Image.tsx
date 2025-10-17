@@ -51,6 +51,7 @@ export default function Image_Image({images, index}:Props){
                     alt={""}
                     fill={true}
                     style={{objectFit: "contain"}}
+                    unoptimized
                 />
             </div>
         </div> : null}
@@ -65,6 +66,7 @@ export default function Image_Image({images, index}:Props){
                 fill={true}
                 style={{objectFit: "cover"}}
                 onClick={()=>handleClick(index)}
+                unoptimized
             />
         </div>
         </>
