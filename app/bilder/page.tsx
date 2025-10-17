@@ -10,7 +10,8 @@ export default async function Page(){
         <main>
             <section className="section">
                 <h2>Bilder</h2> 
-                <Image_Container />
+                <p>Sind temporär hier zu bestaunen: <a href="https://gallery.msvs.ch/" target="_blank">https://gallery.msvs.ch/</a></p>
+                {/*<Image_Container />*/}
             </section>
         </main>
     )
