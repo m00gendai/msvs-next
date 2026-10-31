@@ -8,29 +8,10 @@ interface Props{
     item: File
 }
 
-async function getFile(id:number){
-    const getUrl = await fetch(`https://api.infomaniak.com/2/drive/${process.env.KDRIVE_ROOT}/files/${id}/temporary_url`,{
-        method: "GET",
-            headers: {
-                Authorization: `Bearer ${process.env.KDRIVE}`,
-                "Content-Type" : "application/json",
-            },
-            cache: 'no-store'
-        })
-        const url:GetFileResponse = await getUrl.json()
-        
-        if(url.result === "error"){
-            return `${process.env.ARCHIVE}`
-        }
-        return url.data.temporary_url 
-    }
-
 export default async function Result_Button({item}:Props){
 
-    const path:string = await getFile(item.id)
-
     return(
-        <Link className={`${s.item} ${s.resultButton}`} href={path} target="_blank">
+        <Link className={`${s.item} ${s.resultButton}`} href={`/api/file/${item.id}`} target="_blank">
             <p>{extensionTrimmer(item.name)}</p>
         </Link>
     )

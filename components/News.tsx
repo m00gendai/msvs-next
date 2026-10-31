@@ -5,13 +5,13 @@ import News_Info from "./News_Info"
 
 
 async function getFiles(){
-    const getSourceDirectoryList:Response = await fetch(`https://api.infomaniak.com/2/drive/${process.env.KDRIVE_ROOT}/files/search?directory_id=${process.env.KDRIVE_NEWS}&depth=unlimited&order_by=added_at&order=desc&types[]=pdf&types[]=spreadsheet&types[]=text&per_page=12&with=path`, {
+    const getSourceDirectoryList:Response = await fetch(`https://api.infomaniak.com/2/drive/${process.env.KDRIVE_ROOT}/files/search?directory_id=${process.env.KDRIVE_NEWS}&limit=10&depth=unlimited&order_by=added_at&order=desc&types[]=pdf&types[]=spreadsheet&types[]=text&per_page=12&with=path`, {
         method: "GET",
         headers: {
             Authorization: `Bearer ${process.env.KDRIVE}`,
             "Content-Type" : "application/json"
         },
-        cache: 'no-store'
+        next: { revalidate: 600 }
     })
     const sourceDirectoryList:FileResponse = await getSourceDirectoryList.json()
     return sourceDirectoryList

@@ -9,7 +9,7 @@ async function getImages(id:number){
             Authorization: `Bearer ${process.env.KDRIVE}`,
             "Content-Type" : "application/json"
         },
-        cache: 'no-store'
+        next: { revalidate: 600 }
     })
 
     const images:FileResponse = await getImages.json()
