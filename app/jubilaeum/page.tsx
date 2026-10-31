@@ -2,6 +2,8 @@ import React from "react"
 import Document_Container from "../../components/Document_Container"
 import { CMS_Page, FileResponse } from "../../interfaces"
 import { getPageMetadata } from "../../functions/getPageMetadata"
+import Image_Folder from "../../components/Image_Folder"
+import s from "../../styles/Image_Folder.module.css"
 
 async function getContent(){
     const getContent:Response = await fetch(`https://cms.msvs.ch/api/content/items/page`, {

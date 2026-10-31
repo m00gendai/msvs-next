@@ -123,3 +123,16 @@ export interface Metadata{
   _cby: string;
   _id: string;
 }
+
+export interface SpecialHeroImage{
+  heroImage: Medium;
+  link: string;
+  validityFrom: string;
+  validityUntil: string;
+  _modified: number;
+  _mby: string;
+  _created: number;
+  _state: number;
+  _cby: string;
+  _id: string;
+}

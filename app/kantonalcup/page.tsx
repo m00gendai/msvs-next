@@ -25,7 +25,7 @@ export default async function Page(){
                 <Suspense fallback={<Loader_Result />}>
                 <Cup_Results currentYear={currentYear} drive={process.env.KDRIVE_CUP} />
                 </Suspense>
-                <Link className="archiv" href={`https://kdrive.infomaniak.com/app/share/${process.env.KDRIVE_ROOT}/225d4d16-dff3-47ab-ae41-773504b219d5`} target={`_blank`} ><h3>Archiv</h3></Link>
+                <Link className="archiv" href={`https://kdrive.infomaniak.com/app/share/${process.env.KDRIVE_ROOT}/57f5c34e-9fe5-44fc-ad11-98676963674b`} target={`_blank`} ><h3>Archiv</h3></Link>
             </section>
         </main>
     )
