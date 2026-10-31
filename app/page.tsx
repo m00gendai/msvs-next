@@ -24,6 +24,25 @@ async function getJoinFile(){
     return file
 }
 
+async function getSpecialHeroImage(date:number){
+    const getUrl = await fetch(`https://cms.msvs.ch/api/content/items/specialHero`)
+    const fileResponse = await getUrl.json()
+
+    console.log(fileResponse)
+    if(fileResponse.length != 0){
+        const file:SpecialHeroImage = fileResponse[0]
+        const from:number = new Date(file.validityFrom).getTime()
+        const to:number = new Date(file.validityUntil).getTime()
+        if(date >= from && date <= to){
+            return file
+        } else {
+            return null
+        }
+    } else {
+        return null
+    }
+}
+
 export async function generateMetadata(){
     return getPageMetadata("Home")
 }
