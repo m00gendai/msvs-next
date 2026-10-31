@@ -15,6 +15,11 @@ const nextConfig = {
         port: '',
         pathname: '/storage/uploads/**',
       },
+      {
+        protocol: "https",
+        hostname: "**.download.kdrive.infomaniakusercontent.com",
+        pathname: "/drive/**",
+      },
     ],
   },
 }
