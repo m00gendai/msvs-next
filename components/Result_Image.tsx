@@ -10,7 +10,7 @@ async function getImage(id:number){
                 Authorization: `Bearer ${process.env.KDRIVE}`,
                 "Content-Type" : "application/json",
             },
-            cache: 'no-store'
+            next: { revalidate: 600 }
         })
         const url:GetFileResponse = await getUrl.json()
         console.log(id)
@@ -35,7 +35,7 @@ export default async function Result_Image({file}:Props){
                     <p>{`Lädt Bild...`}</p>
                 </div>
                 <Image 
-                    src={path}
+                    src={`/api/file/${file.id}`}
                     alt={"Bild"}
                     fill={true}
                     style={{objectFit: "contain"}}

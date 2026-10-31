@@ -17,6 +17,7 @@ async function getJoinFile(){
             Authorization: `Bearer ${process.env.KDRIVE}`,
             "Content-Type" : "application/json"
         },
+        next: { revalidate: 600 }
     })
 
     const file:FileResponse = await getFile.json()
@@ -30,6 +31,7 @@ async function getFilePath(id:number){
                 Authorization: `Bearer ${process.env.KDRIVE}`,
                 "Content-Type" : "application/json",
             },
+            next: { revalidate: 600 }
         })
         const url:GetFileResponse = await getUrl.json()
         
@@ -60,7 +62,7 @@ export default async function Home() {
             <div className={s.container}>
               <Link href="/kantonalcup" className={s.button}>Kantonalcup</Link>
               <Link href="/jubilaeum" className={s.button}>Jubiläumsbuch</Link>
-              <Link href={path} className={s.button}>Mitglied werden</Link>
+              <Link href={path} className={s.button} prefetch={false}>Mitglied werden</Link>
             </div>
         </section>
         <section className={s.news}>

@@ -9,7 +9,7 @@ async function getDirectory(currentYear:number, drive:string | undefined){
             Authorization: `Bearer ${process.env.KDRIVE}`,
             "Content-Type" : "application/json"
         },
-        cache: 'no-store'
+        next: { revalidate: 600 }
     })
 
     const directory:FileResponse = await getDirectory.json()
