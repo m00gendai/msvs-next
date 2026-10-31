@@ -24,23 +24,6 @@ async function getJoinFile(){
     return file
 }
 
-async function getFilePath(id:number){
-    const getUrl = await fetch(`https://api.infomaniak.com/2/drive/${process.env.KDRIVE_ROOT}/files/${id}/temporary_url`,{
-        method: "GET",
-            headers: {
-                Authorization: `Bearer ${process.env.KDRIVE}`,
-                "Content-Type" : "application/json",
-            },
-            next: { revalidate: 600 }
-        })
-        const url:GetFileResponse = await getUrl.json()
-        
-        if(url.result === "error"){
-            return `${process.env.ARCHIVE}`
-        }
-        return url.data.temporary_url 
-    }
-
 export async function generateMetadata(){
     return getPageMetadata("Home")
 }
@@ -48,7 +31,6 @@ export async function generateMetadata(){
 export default async function Home() {
 
     const thatFile:FileResponse = await getJoinFile()
-    const path:string = await getFilePath(thatFile.data[0].id)
   
     return (
     <>
@@ -62,7 +44,7 @@ export default async function Home() {
             <div className={s.container}>
               <Link href="/kantonalcup" className={s.button}>Kantonalcup</Link>
               <Link href="/jubilaeum" className={s.button}>Jubiläumsbuch</Link>
-              <Link href={path} className={s.button} prefetch={false}>Mitglied werden</Link>
+              <Link href={`/api/file/${thatFile.data[0].id}`} className={s.button} prefetch={false}>Mitglied werden</Link>
             </div>
         </section>
         <section className={s.news}>
