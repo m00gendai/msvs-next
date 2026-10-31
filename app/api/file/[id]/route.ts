@@ -15,5 +15,6 @@ export async function GET(
 
   if (!res.ok) return NextResponse.redirect(process.env.ARCHIVE!);
   const json = await res.json();
+  
   return NextResponse.redirect(json.data?.temporary_url ?? process.env.ARCHIVE!);
 }
